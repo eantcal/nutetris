@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source file">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="header file">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="File di risorse">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="tetris_piece.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="tetris_concrete_piece.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="tetris_piece_factory.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="input_device.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="keyboard_input_device.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="timer_input_device.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="input_event_listener.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="input_event_dispatcher.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="tetris_game_mgr.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="tetris_game_state.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="tetris_renderer.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="tetris_textmode_renderer.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="tetris_grid.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="tetris_input_mgr.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="nu_gui.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="tetris_gdimode_renderer.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="tetris_graph_game_mgr.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="tetris_concrete_piece.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="tetris_piece_factory.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="timer_input_device.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="keyboard_input_device.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="input_event_dispatcher.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="tetris_input_mgr.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="tetris_game_mgr.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="tetris_grid.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="tetris_piece_O.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="tetris_piece_I.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="tetris_piece_S.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="tetris_piece_Z.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="tetris_piece_L.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="tetris_piece_J.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="tetris_piece_T.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="tetris_textmode_renderer.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="tetris_gdimode_renderer.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="nu_gui.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+    <ClCompile Include="tetris.cc">
+      <Filter>Source file</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

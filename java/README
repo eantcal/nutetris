@@ -1,0 +1,12 @@
+
+-------------------------------------------------------------------------------
+nuJetris - https://sites.google.com/site/eantcal/home/c/nutetris/nujetris
+(c) Antonino Calderone <acaldmail@gmail.com> - 2014
+-------------------------------------------------------------------------------
+
+nuJetris is a Java implementation of nuTetris which is a Tetris clone
+written in C++ 
+
+See also https://sites.google.com/site/eantcal/home/c/nutetris
+nuJetris and nuTetris have been designed mainly for educational purposes.
+
