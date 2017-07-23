@@ -1,6 +1,8 @@
 # nutetris
 tetris clone in c++11 and java for educational purposes
 
+![nuTetris - Java version](https://7bcac53c-a-62cb3a1a-s-sites.googlegroups.com/site/eantcal/home/c/nutetris/jetris.png)
+
 ## Why nuTetris?
 
 nuTetris is a good sample of not trivial application which can be used as example in a programming course.
@@ -14,7 +16,7 @@ So, it has been designed mainly for educational purposes for developers that can
   - Executes the game state machine 
   - Calls the Renderer in order to draw the game scene 
   - Canvas and Game Board are instance of Grid class (tetris::grid_t), which manages the interactions among the pieces. It is also used to represent the piece canvas which shows a preview of next falling piece Game data (tetris::game_mgr_t::game_renderer_data_t) object holds information passed to the Renderer which use them to draw the scene
-
+http://https://7bcac53c-a-62cb3a1a-s-sites.googlegroups.com/site/eantcal/home/c/nutetris/jetris.png?attachauth=ANoY7crJ5HCMmXbaspME5E03XhyUasdiX0myZhKFB1C9_MNQiot3v_wrEjiXpuHwWg-6GDuoXnM_uw3yNpwYWHRnZyOKZfHTet1liTfPy5Fu-6zuaxRRXE6ZVzlTNBFzZOKuXLEQOEyN7k0kAsOdmnw0fooMFCo5y3RRHGc6yiw47LGxnXSjUhw1tyW6kDWmJZwQ7Y9kb6KUp1RpBWXSaP8Q2Y90TWyugckRK7B5tSBPgX5pMgK8YvY%3D&attredirects=0
 - Renderer (tetris::renderer_t) 
   - Interface for the game scene renderer 
   - At compile time is selected one of the following renderer implementations: 
@@ -34,6 +36,6 @@ So, it has been designed mainly for educational purposes for developers that can
 - Input Device
   - Interface which defines how input is managed 
   
-- Keyboard Input Device (is an Input Device) 
+- Keyboard Input Device (is an Input Device) http://https://7bcac53c-a-62cb3a1a-s-sites.googlegroups.com/site/eantcal/home/c/nutetris/jetris.png?attachauth=ANoY7crJ5HCMmXbaspME5E03XhyUasdiX0myZhKFB1C9_MNQiot3v_wrEjiXpuHwWg-6GDuoXnM_uw3yNpwYWHRnZyOKZfHTet1liTfPy5Fu-6zuaxRRXE6ZVzlTNBFzZOKuXLEQOEyN7k0kAsOdmnw0fooMFCo5y3RRHGc6yiw47LGxnXSjUhw1tyW6kDWmJZwQ7Y9kb6KUp1RpBWXSaP8Q2Y90TWyugckRK7B5tSBPgX5pMgK8YvY%3D&attredirects=0
   - Gets keyboard events
   
