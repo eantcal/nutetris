@@ -1,6 +1,7 @@
 bin_PROGRAMS = nutetris
 
-AM_CXXFLAGS = $(INTI_CFLAGS) -pthread -std=c++11
+AM_CXXFLAGS = $(INTI_CFLAGS) -pthread -std=c++11 -I/usr/X11/include
+LDFLAGS+= -L/usr/X11/lib -lX11
 
 nutetris_SOURCES = config.h \
         input_device.h \

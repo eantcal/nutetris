@@ -33,6 +33,8 @@
 #include <exception>
 #include <memory>
 #include <vector>
+#include <string>
+
 
 /* -------------------------------------------------------------------------- */
 
