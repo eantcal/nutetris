@@ -1,12 +1,11 @@
 # nutetris
-tetris clone in c++11 and java for educational purposes
+tetris clone written in c++11 and ported in java. 
 
 ![nuTetris - Java version](https://7bcac53c-a-62cb3a1a-s-sites.googlegroups.com/site/eantcal/home/c/nutetris/jetris.png)
 
 ## Why nuTetris?
-
-nuTetris is a good sample of not trivial application which can be used as example in a programming course.
-So, it has been designed mainly for educational purposes for developers that can deal with a non-trivial example of object-oriented design, which relies on effective modern techniques for producing modular and reusable and multi-platform code.
+nuTetris is a good sample of not trivial application which can be used as example in a programming training course.
+It has been designed mainly for educational purposes for developers that can deal with a non-trivial example of object-oriented design, which relies on effective modern techniques for producing modular and reusable and multi-platform code.
 
 ## The game components
 - Game manager 
@@ -23,22 +22,23 @@ So, it has been designed mainly for educational purposes for developers that can
 - Renderer
   - Interface for the game scene renderer.
   - At compile time is selected one of the following renderer implementations: 
-  -- Text Renderer (is a Renderer) 
-  -- Renders the game scene using ASCII art graphics 
-  -- GDI Renderer (is a Renderer) relies on GUI (tetris::gui_t) which provides an Adapter for Linux (X11) and Windows implementations
+  - Text Renderer (is a Renderer) 
+  - Renders the game scene using ASCII art graphics 
+  - GDI Renderer (is a Renderer) relies on GUI (tetris::gui_t) which provides an Adapter for Linux (X11) and Windows implementations
   
 - Piece Factory
   - Creates each Tetris Piece instance needed by Game Manager 
   
-- Tetris Piece (implements the abstract class tetris::piece_t) 
+- Tetris Piece
   - Holds piece shape information
   
-- Input Manager (is an Input Event Dispatcher) 
-  - Manages the input devices (Keyboard, Timers) and notifies the Game Manager of user and timer events 
+- Input Manager 
+  - Manages the input devices (Keyboard, Timers).
+  Used by Game Manager to collect any user and timer events 
   
-- Input Device
-  - Interface which defines how input is managed 
+- Input Device (c++ implementation only)
+  - Interface implemented by the actual input devices 
   
-- Keyboard Input Device (is an Input Device) 
-  - Gets keyboard events
+- Keyboard Input Device is an Input Device (c++ implementation only) 
+  - Read and process the keyboard events
  
