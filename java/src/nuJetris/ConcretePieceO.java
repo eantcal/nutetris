@@ -15,41 +15,41 @@
  *  along with nuTetris; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  US
  *
- *  Author: <antonino.calderone@ericsson.com>, <acaldmail@gmail.com>
+ *  Author: <antonino.calderone@gmail.com>
  *
  */
 
 package nuJetris;
 
 public class ConcretePieceO extends ConcretePiece {
-	private int _color = 0;
-	
-	ConcretePieceO(int c) {
-		_color = c;
-		
-		RowData[] data;
+   private int _color = 0;
+   
+   ConcretePieceO(int c) {
+       _color = c;
+       
+       RowData[] data;
 
-		int[] rowdata1 = { 0, 0, 0, 0 };
-		int[] rowdata2 = { 0, c, c, 0 };
-		int[] rowdata3 = { 0, c, c, 0 };
-		int[] rowdata4 = { 0, 0, 0, 0 };
+       int[] rowdata1 = { 0, 0, 0, 0 };
+       int[] rowdata2 = { 0, c, c, 0 };
+       int[] rowdata3 = { 0, c, c, 0 };
+       int[] rowdata4 = { 0, 0, 0, 0 };
 
-		for (int rowidx = 0; rowidx < Piece.ROWS; ++rowidx) {
+       for (int rowidx = 0; rowidx < Piece.ROWS; ++rowidx) {
 
-			data = _shape[rowidx].get();
+           data = _shape[rowidx].get();
 
-			data[0].set(rowdata1);
-			data[1].set(rowdata2);
-			data[2].set(rowdata3);
-			data[3].set(rowdata4);
-		}
+           data[0].set(rowdata1);
+           data[1].set(rowdata2);
+           data[2].set(rowdata3);
+           data[3].set(rowdata4);
+       }
 
-		compute_min_bounding_box();
-	}
-	
-	@Override
-	public Piece clone() {
-		return new ConcretePieceO(_color);
-	}
+       compute_min_bounding_box();
+   }
+   
+   @Override
+   public Piece clone() {
+       return new ConcretePieceO(_color);
+   }
 
 }

@@ -15,7 +15,7 @@
  *  along with nuTetris; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  US
  *
- *  Author: <antonino.calderone@ericsson.com>, <acaldmail@gmail.com>
+ *  Author: <antonino.calderone@gmail.com>
  *
  */
 
@@ -23,24 +23,24 @@ package nuJetris;
 
 public class RowData {
 
-	protected int[] data;
+    protected int[] data;
 
-	RowData(int cols) {
-		data = new int[cols];
+    RowData(int cols) {
+        data = new int[cols];
 
-		for (int i = 0; i < data.length; ++i) {
-			data[i] = 0;
-		}
-	}
+        for (int i = 0; i < data.length; ++i) {
+            data[i] = 0;
+        }
+    }
 
-	public int[] get() {
-		return data;
-	}
+    public int[] get() {
+        return data;
+    }
 
-	public void set(int[] rowdata) {
-		for (int i = 0; i < data.length; ++i) {
-			data[i] = rowdata[i];
-		}
-	}
+    public void set(int[] rowdata) {
+        for (int i = 0; i < data.length; ++i) {
+            data[i] = rowdata[i];
+        }
+    }
 
 }

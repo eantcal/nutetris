@@ -15,7 +15,7 @@
  *  along with nuTetris; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  US
  *
- *  Author: <antonino.calderone@ericsson.com>, <acaldmail@gmail.com>
+ *  Author: <antonino.calderone@gmail.com>
  *
  */
 
@@ -23,14 +23,14 @@ package nuJetris;
 
 public class game {
 
-	public static void main(String[] args) {
-		
-		GameManager gm = new GameManager();
-		
-		while (true)
-		{
-			gm.run();
-		}
-	}
+   public static void main(String[] args) {
+      
+      GameManager gm = new GameManager();
+      
+      while (true)
+      {
+         gm.run();
+      }
+   }
 
 }
