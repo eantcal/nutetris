@@ -14,16 +14,18 @@ So, it has been designed mainly for educational purposes for developers that can
   - Gets any input event from Input Manager 
   - Executes the game state machine 
   - Calls the Renderer in order to draw the game scene 
-  - Canvas and Game Board are instance of Grid class (tetris::grid_t), which manages the interactions among the pieces. It is also used to represent the piece canvas which shows a preview of next falling piece Game data (tetris::game_mgr_t::game_renderer_data_t) object holds information passed to the Renderer which use them to draw the scene
+  - Canvas and Game Board are instance of Grid class, which manages the interactions of piece and board. 
+    It is also used to represent the piece canvas which shows a preview of next falling piece.
+  - Game data object holds information passed to the Renderer which use them to draw the scene
   
 ![nuTetris components](http://www.eantcal.eu/home/c/nutetris/tetrismodules.jpg?attredirects=0)
 
 - Renderer
-  - Interface for the game scene renderer 
+  - Interface for the game scene renderer.
   - At compile time is selected one of the following renderer implementations: 
-  - Text Renderer (is a Renderer) 
-  - Renders the game scene using ASCII art graphics 
-  - GDI Renderer (is a Renderer) relies on GUI (tetris::gui_t) which provides an Adapter for Linux (X11) and Windows implementations
+  -- Text Renderer (is a Renderer) 
+  -- Renders the game scene using ASCII art graphics 
+  -- GDI Renderer (is a Renderer) relies on GUI (tetris::gui_t) which provides an Adapter for Linux (X11) and Windows implementations
   
 - Piece Factory
   - Creates each Tetris Piece instance needed by Game Manager 
