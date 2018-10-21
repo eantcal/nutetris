@@ -1,33 +1,18 @@
 /*
- *  This file is part of nuJetris
- *
- *  nuTetris is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  nuTetris is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with nuTetris; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  US
- *
+ *  This file is part of nuTetris
  *  Author: <antonino.calderone@gmail.com>
  *
  */
 
-package nuJetris;
+package nuTetris;
 
 public class ConcretePieceI extends ConcretePiece {
-   private int _color = 0;
+   private int color = 0;
    
    ConcretePieceI(int c) {
-       _color = c;
+       color = c;
        
-       RowData[] data = _shape[0].get();
+       RowData[] data = shape[0].getData();
 
        {        
            int[] rowdata1 = { 0, 0, 0, 0 };
@@ -41,7 +26,7 @@ public class ConcretePieceI extends ConcretePiece {
            data[3].set(rowdata4);
        }
 
-       data = _shape[1].get();
+       data = shape[1].getData();
        
        {
            int[] rowdata1 = { 0, 0, c, 0 };
@@ -55,7 +40,7 @@ public class ConcretePieceI extends ConcretePiece {
            data[3].set(rowdata4);
        }
 
-       data = _shape[2].get();
+       data = shape[2].getData();
        
        {
            int[] rowdata1 = { 0, 0, 0, 0 };
@@ -69,7 +54,7 @@ public class ConcretePieceI extends ConcretePiece {
            data[3].set(rowdata4);
        }
 
-       data = _shape[3].get();
+       data = shape[3].getData();
        
        {
            int[] rowdata1 = { 0, 0, c, 0 };
@@ -83,12 +68,12 @@ public class ConcretePieceI extends ConcretePiece {
            data[3].set(rowdata4);
        }
        
-       compute_min_bounding_box();
+       computeMinBoundingBox();
 
    }
    
    @Override
    public Piece clone() {
-       return new ConcretePieceI(_color);
+       return new ConcretePieceI(color);
    }
 }
