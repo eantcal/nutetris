@@ -1,12 +1,11 @@
 
 -------------------------------------------------------------------------------
-nuJetris - https://sites.google.com/site/eantcal/home/c/nutetris/nujetris
-(c) Antonino Calderone <antonino.calderone@gmail.com> - 2014-2017
+nuJetris - http://www.eantcal.eu/home/c/nutetris
+(c) Antonino Calderone <antonino.calderone@gmail.com> - 2014-2018
 -------------------------------------------------------------------------------
 
-nuJetris is a Java implementation of nuTetris which is a Tetris clone
+nuJetris is a Java porting of nuTetris which is a Tetris clone
 written in C++ 
 
-See also https://sites.google.com/site/eantcal/home/c/nutetris
-nuJetris and nuTetris have been designed mainly for educational purposes.
+nuJetris and nuTetris have been designed for educational purposes.
 
