@@ -1,7 +1,7 @@
 # nutetris
 tetris clone written in c++11 and ported in Java and in BASIC (for nuBASIC interpreter).
 
-![nuTetris - Java version](https://7bcac53c-a-62cb3a1a-s-sites.googlegroups.com/site/eantcal/home/c/nutetris/jetris.png)
+![nuTetris - Java version](http://www.eantcal.eu/archive/nutetris/jetris.png)
 
 ## Why nuTetris?
 nuTetris is a good sample of not trivial application which can be used as example in a programming training course.
@@ -17,7 +17,7 @@ It has been designed mainly for educational purposes for developers that can dea
     It is also used to represent the piece canvas which shows a preview of next falling piece.
   - Game data object holds information passed to the Renderer which use them to draw the scene
   
-![nuTetris components](http://www.eantcal.eu/home/c/nutetris/tetrismodules.jpg?attredirects=0)
+![nuTetris components](http://www.eantcal.eu/archive/nutetris/tetrismodules.jpg?attredirects=0)
 
 - Renderer
   - Interface for the game scene renderer.
