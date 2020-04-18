@@ -94,7 +94,7 @@
             {
                 int x = 0;
 
-                foreach (int cell in row.get())
+                foreach (int cell in row.get)
                 {
                     if (cell != 0)
                     {
@@ -145,7 +145,7 @@
         {
             ShapeData block = Shape[GetOrientation()];
             RowData row_data = block.GetRow(row);
-            return row_data.get()[col];
+            return row_data.get[col];
         }
 
         public override int GetCol()

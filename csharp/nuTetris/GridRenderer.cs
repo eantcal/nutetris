@@ -50,7 +50,7 @@ namespace nuTetris
         {
             // super.paintComponent(g);
 
-            for (int y = 0; y < grid.GetRowsCount(); ++y)
+            for (int y = 0; y < grid.RowsCount; ++y)
             {
                 for (int x = 0; x < grid.ColsCount; ++x)
                 {
@@ -86,7 +86,7 @@ namespace nuTetris
                     new Rectangle(xOffset - 1,
                                   yOffset - 1,
                                   brickSize * grid.ColsCount + 2,
-                                  brickSize * grid.GetRowsCount() + 2));
+                                  brickSize * grid.RowsCount + 2));
 
                 newPen.Dispose();
             }

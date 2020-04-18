@@ -17,7 +17,7 @@ namespace nuTetris
         }
 
         // private Timer timer = new Timer();
-        public void processInput(KeyEventArgs e)
+        public void ProcessInput(KeyEventArgs e)
         {
             _event = EventType.UNKNOWN;
 
@@ -67,7 +67,7 @@ namespace nuTetris
         private readonly object syncLock = new object();
 
         /** Returns last event detected */
-        public EventType poll()
+        public EventType Poll()
         {
             EventType ev = EventType.NONE;
 
@@ -82,7 +82,7 @@ namespace nuTetris
         }
 
 
-        public void tick()
+        public void Tick()
         {
             lock (syncLock)
             {

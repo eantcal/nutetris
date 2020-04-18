@@ -25,17 +25,12 @@ namespace nuTetris
 
         protected int[] Data { get => data; set => data = value; }
 
-        public int[] get()
-        {
-            return Data;
-        }
+        public int[] get => Data;
 
-        public void set(int[] data)
+        public void Set(int[] data)
         {
             for (int i = 0; i < this.Data.Length; ++i)
-            {
                 this.Data[i] = data[i];
-            }
         }
     }
 }

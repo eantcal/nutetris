@@ -24,15 +24,13 @@ namespace nuTetris
         /** Construct a catalog of pieces */
         public PieceFactory()
         {
-            int i = 0;
-
-            AddCatalog(new ConcretePieceL(++i));
-            AddCatalog(new ConcretePieceI(++i));
-            AddCatalog(new ConcretePieceJ(++i));
-            AddCatalog(new ConcretePieceO(++i));
-            AddCatalog(new ConcretePieceS(++i));
-            AddCatalog(new ConcretePieceZ(++i));
-            AddCatalog(new ConcretePieceT(++i));
+            AddCatalog(new ConcretePieceL(1));
+            AddCatalog(new ConcretePieceI(2));
+            AddCatalog(new ConcretePieceJ(3));
+            AddCatalog(new ConcretePieceO(4));
+            AddCatalog(new ConcretePieceS(5));
+            AddCatalog(new ConcretePieceZ(6));
+            AddCatalog(new ConcretePieceT(7));
         }
 
         private List<Piece> catalog = new List<Piece>();

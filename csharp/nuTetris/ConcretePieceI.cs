@@ -21,10 +21,10 @@ namespace nuTetris
                 int[] rowdata3 = { 0, 0, 0, 0 };
                 int[] rowdata4 = { 0, 0, 0, 0 };
 
-                data[0].set(rowdata1);
-                data[1].set(rowdata2);
-                data[2].set(rowdata3);
-                data[3].set(rowdata4);
+                data[0].Set(rowdata1);
+                data[1].Set(rowdata2);
+                data[2].Set(rowdata3);
+                data[3].Set(rowdata4);
             }
 
             data = Shape[1].GetData();
@@ -35,10 +35,10 @@ namespace nuTetris
                 int[] rowdata3 = { 0, 0, c, 0 };
                 int[] rowdata4 = { 0, 0, c, 0 };
 
-                data[0].set(rowdata1);
-                data[1].set(rowdata2);
-                data[2].set(rowdata3);
-                data[3].set(rowdata4);
+                data[0].Set(rowdata1);
+                data[1].Set(rowdata2);
+                data[2].Set(rowdata3);
+                data[3].Set(rowdata4);
             }
 
             data = Shape[2].GetData();
@@ -49,10 +49,10 @@ namespace nuTetris
                 int[] rowdata3 = { 0, 0, 0, 0 };
                 int[] rowdata4 = { 0, 0, 0, 0 };
 
-                data[0].set(rowdata1);
-                data[1].set(rowdata2);
-                data[2].set(rowdata3);
-                data[3].set(rowdata4);
+                data[0].Set(rowdata1);
+                data[1].Set(rowdata2);
+                data[2].Set(rowdata3);
+                data[3].Set(rowdata4);
             }
 
             data = Shape[3].GetData();
@@ -63,10 +63,10 @@ namespace nuTetris
                 int[] rowdata3 = { 0, 0, c, 0 };
                 int[] rowdata4 = { 0, 0, c, 0 };
 
-                data[0].set(rowdata1);
-                data[1].set(rowdata2);
-                data[2].set(rowdata3);
-                data[3].set(rowdata4);
+                data[0].Set(rowdata1);
+                data[1].Set(rowdata2);
+                data[2].Set(rowdata3);
+                data[3].Set(rowdata4);
             }
 
             computeMinBoundingBox();

@@ -43,7 +43,7 @@ namespace nuTetris
             for (int rowIdx = 0; rowIdx < rows; ++rowIdx)
             {
                 RowData row = new RowData(cols);
-                row.set(data[rowIdx].get());
+                row.Set(data[rowIdx].get);
                 obj.SetRow(rowIdx, row);
             }
 

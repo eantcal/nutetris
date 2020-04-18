@@ -38,7 +38,7 @@ namespace nuTetris
                 tickCounter = TICK_COUNTER_RESET;
             }
 
-            gm.run(formGraphics);
+            gm.Run(formGraphics);
             formGraphics.Dispose();
 
             myTimer.Enabled = true;
@@ -55,7 +55,7 @@ namespace nuTetris
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            gm.inputMgr.processInput(e);
+            gm.inputMgr.ProcessInput(e);
         }
     }
 }

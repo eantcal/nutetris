@@ -84,7 +84,7 @@ namespace nuTetris
         public void UndoMovePiece()
         {
             gameGrid.CurrentPiece.Undo();
-            gameGrid.PlacePiece;
+            _ = gameGrid.GetPlacePiece();
         }
 
         /** Take a new piece from catalog */
@@ -98,7 +98,7 @@ namespace nuTetris
                 pFactory.Make(randomGenerator.Next(catalog_size)));
 
             previewCanvas.Clear();
-            previewCanvas.PlacePiece;
+            _ = previewCanvas.GetPlacePiece();
         }
 
         /** Acknowledge last input event */
@@ -108,20 +108,14 @@ namespace nuTetris
         }
 
         /** Remove the piece from the game area */
-        private void RemovePiece()
-        {
-            gameGrid.RemovePiece();
-        }
+        private void RemovePiece() => gameGrid.RemovePiece();
 
-        public void TimerTick()
-        {
-            inputMgr.tick();
-        }
+        public void TimerTick() => inputMgr.Tick();
 
         /** Process any new input event */
         void ProcessInput()
         {
-            InputManager.EventType ev = inputMgr.poll();
+            InputManager.EventType ev = inputMgr.Poll();
 
             switch (ev)
             {
@@ -187,7 +181,7 @@ namespace nuTetris
         public void RemoveFullRows() => gameGrid.RemoveFullRows();
 
         /** Processes an input and handles it ! if it is related to piece movement */
-        public InputEvent handlePieceMovements()
+        public InputEvent HandlePieceMovements()
         {
             InputEvent input = Input;
 
@@ -232,7 +226,7 @@ namespace nuTetris
         public void Play(System.Drawing.Graphics g)
         {
             // Input is processed using chain-of-responsibility pattern
-            InputEvent input = handlePieceMovements();
+            InputEvent input = HandlePieceMovements();
 
             switch (input)
             {
@@ -250,7 +244,7 @@ namespace nuTetris
                     break;
             }
 
-            Grid.PlaceSt placeStatus = gameGrid.PlacePiece;
+            Grid.PlaceSt placeStatus = gameGrid.GetPlacePiece();
 
             HashSet<int> fullRows;
 
@@ -326,7 +320,7 @@ namespace nuTetris
             previewCanvas.SetCurrentPiece(
                 pFactory.Make(randomGenerator.Next(catalogSize)));
 
-            previewCanvas.PlacePiece;
+            _ = previewCanvas.GetPlacePiece();
 
             DropPiece(false);
 
@@ -334,7 +328,7 @@ namespace nuTetris
         }
 
         /** Implement the GAMEOVER state */
-        public void gameOver(System.Drawing.Graphics g)
+        public void GameOver(System.Drawing.Graphics g)
         {
             // Input is processed using chain-of-responsibility pattern
             InputEvent input = Input;
@@ -361,7 +355,7 @@ namespace nuTetris
         }
 
         /** Runs the game */
-        public void run(System.Drawing.Graphics g)
+        public void Run(System.Drawing.Graphics g)
         {
             switch (gameState)
             {
@@ -374,15 +368,12 @@ namespace nuTetris
                     break;
 
                 case GameState.GAMEOVER:
-                    gameOver(g);
+                    GameOver(g);
                     break;
             }
         }
 
-        public InputManager getInputManager()
-        {
-            return inputMgr;
-        }
+        public InputManager InputManager => inputMgr;
 
         private readonly int fullrowBlinkDalayMs = FULL_ROW_BLNK_DL;
 
