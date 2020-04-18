@@ -33,7 +33,7 @@ namespace nuTetris
             AddCatalog(new ConcretePieceT(7));
         }
 
-        private List<Piece> catalog = new List<Piece>();
-        private static PieceFactory instance = new PieceFactory();
+        private readonly List<Piece> catalog = new List<Piece>();
+        private static readonly PieceFactory instance = new PieceFactory();
     }
 }

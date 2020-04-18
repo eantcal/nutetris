@@ -18,14 +18,12 @@ namespace nuTetris
             Data = new int[cols];
 
             for (int i = 0; i < Data.Length; ++i)
-            {
                 Data[i] = 0;
-            }
         }
 
         protected int[] Data { get => data; set => data = value; }
 
-        public int[] get => Data;
+        public int[] Get => Data;
 
         public void Set(int[] data)
         {

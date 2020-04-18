@@ -38,15 +38,10 @@
             Shape = new ShapeData[Piece.ORIENTATIONS];
 
             for (int i = 0; i < Shape.Length; ++i)
-            {
                 Shape[i] = new ShapeData();
-            }
         }
 
-        public override Piece Clone()
-        {
-            return new ConcretePiece();
-        }
+        public override Piece Clone() => new ConcretePiece();
 
         public override void MoveRight()
         {
@@ -74,10 +69,10 @@
             if (data.orientation >= ORIENTATIONS)
                 data.orientation = 0;
 
-            computeMinBoundingBox();
+            ComputeMinBoundingBox();
         }
 
-        protected void computeMinBoundingBox()
+        protected void ComputeMinBoundingBox()
         {
             if (Shape.Length == 0)
                 return;
@@ -94,7 +89,7 @@
             {
                 int x = 0;
 
-                foreach (int cell in row.get)
+                foreach (int cell in row.Get)
                 {
                     if (cell != 0)
                     {
@@ -133,65 +128,36 @@
             if (data.orientation < 0)
                 data.orientation = ORIENTATIONS - 1;
 
-            computeMinBoundingBox();
+            ComputeMinBoundingBox();
         }
 
-        public override void Undo()
-        {
-            data.copyFrom(undoData);
-        }
+        public override void Undo() => data.copyFrom(undoData);
 
         public override int GetAt(int col, int row)
         {
             ShapeData block = Shape[GetOrientation()];
             RowData row_data = block.GetRow(row);
-            return row_data.get[col];
+            return row_data.Get[col];
         }
 
-        public override int GetCol()
-        {
-            return data.posX;
-        }
+        public override int GetCol() => data.posX;
 
-        public override int GetRow()
-        {
-            return data.posY;
-        }
+        public override int GetRow() => data.posY;
 
-        public override int GetLeftMargin()
-        {
-            return data.leftMargin;
-        }
+        public override int GetLeftMargin() => data.leftMargin;
 
-        public override int GetRightMargin()
-        {
-            return data.rightMargin;
-        }
+        public override int GetRightMargin() => data.rightMargin;
 
-        public override int GetTopMargin()
-        {
-            return data.topMargin;
-        }
+        public override int GetTopMargin() => data.topMargin;
 
-        public override int GetBottomMargin()
-        {
-            return data.bottomMargin;
-        }
+        public override int GetBottomMargin() => data.bottomMargin;
 
-        public override int GetOrientation()
-        {
-            return data.orientation;
-        }
+        public override int GetOrientation() => data.orientation;
 
-        public override ShapeData GetShape()
-        {
-            return Shape[data.orientation];
-        }
+        public override ShapeData GetShape() => Shape[data.orientation];
 
-        public override void MoveCenter(int rowLength)
-        {
+        public override void MoveCenter(int rowLength) => 
             data.posX = (rowLength + (Piece.COLS - data.leftMargin
                     - data.rightMargin)) / 2;
-        }
     }
 }

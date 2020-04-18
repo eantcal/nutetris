@@ -18,7 +18,7 @@ namespace nuTetris
         private readonly int brickSize = 20;
 
 
-        private static System.Drawing.Color idx2color(int c)
+        private static System.Drawing.Color Idx2color(int c)
         {
             if (c < 0)
                 return System.Drawing.Color.White;
@@ -46,7 +46,7 @@ namespace nuTetris
             return System.Drawing.Color.Black;
         }
 
-        public void update(System.Drawing.Graphics g)
+        public void Update(System.Drawing.Graphics g)
         {
             // super.paintComponent(g);
 
@@ -57,7 +57,7 @@ namespace nuTetris
                     int col = grid.GetAt(x, y);
 
                     System.Drawing.SolidBrush myBrush =
-                        new System.Drawing.SolidBrush(idx2color(col));
+                        new System.Drawing.SolidBrush(Idx2color(col));
 
                     g.FillRectangle(myBrush,
                         new Rectangle(xOffset + x * brickSize,

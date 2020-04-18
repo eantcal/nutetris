@@ -72,12 +72,12 @@ namespace nuTetris
         /** Redraw the scene */
         public void RenderScene(System.Drawing.Graphics g)
         {
-            String scoreText = String.Concat(score);
+            String scoreText = String.Concat(Score);
 
             mainForm.getScoreBoard().Text = scoreText;
 
-            gridRenderer.update(g);
-            canvasRenderer.update(g);
+            gridRenderer.Update(g);
+            canvasRenderer.Update(g);
         }
 
         /** Revert to previous piece position / orientation */
@@ -272,7 +272,7 @@ namespace nuTetris
                         scoreK *= 2;
                     }
 
-                    score += scoreK * FULL_ROW_SCORE_ODM;
+                    Score += scoreK * FULL_ROW_SCORE_ODM;
                 }
 
                 AckInputEvent();
@@ -344,14 +344,9 @@ namespace nuTetris
             String message = "Do you want to restart the game ?";
 
             if (MessageBox.Show(message, title, MessageBoxButtons.YesNo) != DialogResult.Yes)
-            {
                 System.Environment.Exit(0);
-            }
             else
-            {
                 gameState = GameState.BEGIN;
-            }
-
         }
 
         /** Runs the game */
@@ -374,6 +369,8 @@ namespace nuTetris
         }
 
         public InputManager InputManager => inputMgr;
+
+        public long Score { get => score; set => score = value; }
 
         private readonly int fullrowBlinkDalayMs = FULL_ROW_BLNK_DL;
 

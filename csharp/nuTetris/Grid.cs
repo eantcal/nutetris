@@ -53,7 +53,7 @@ namespace nuTetris
         public int GetAt(int x, int y)
         {
             RowData[] row = (RowData[])gridMap.GetData();
-            return row[y].get[x];
+            return row[y].Get[x];
         }
 
         /** Clear the grid content */
@@ -93,9 +93,7 @@ namespace nuTetris
             int[] val = new int[ColsCount];
 
             for (int i = 0; i < ColsCount; ++i)
-            {
                 val[i] = attr;
-            }
 
             rowdata.Set(val);
 
@@ -123,10 +121,7 @@ namespace nuTetris
         }
 
         /** Place current piece onto the grid. */
-        public PlaceSt GetPlacePiece()
-        {
-            return MergePiece(MergeType.MERGE_PUT);
-        }
+        public PlaceSt GetPlacePiece() => MergePiece(MergeType.MERGE_PUT);
 
         /** Remove piece from the grid */
         public void RemovePiece() => MergePiece(MergeType.MERGE_REMOVE);
@@ -192,7 +187,7 @@ namespace nuTetris
                         continue;
                     }
 
-                    int gridCell = draftMap.GetRow(gridRow).get[gridCol];
+                    int gridCell = draftMap.GetRow(gridRow).Get[gridCol];
                     int pieceCell = piece.GetAt(x, y);
 
                     if (mode == MergeType.MERGE_PUT)
@@ -209,18 +204,14 @@ namespace nuTetris
 
                         // Copy piece (or delete) cell content into the draft data map
                         if (pieceCell != 0)
-                        {
-                            draftMap.GetRow(gridRow).get[gridCol] = pieceCell;
-                        }
+                            draftMap.GetRow(gridRow).Get[gridCol] = pieceCell;
                     }
                     else
                     {
                         // Copy piece (or delete) cell content into the draft data
                         // map
                         if (pieceCell != 0)
-                        {
-                            draftMap.GetRow(gridRow).get[gridCol] = 0;
-                        }
+                            draftMap.GetRow(gridRow).Get[gridCol] = 0;
                     }
                 }
             }
@@ -235,7 +226,7 @@ namespace nuTetris
         private bool IsFullRow(int rowIdx)
         {
             bool ret = true;
-            int[] v = gridMap.GetData()[rowIdx].get;
+            int[] v = gridMap.GetData()[rowIdx].Get;
 
             for (int i = 0; i < v.Length; ++i)
             {

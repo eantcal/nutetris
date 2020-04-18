@@ -8,11 +8,9 @@ namespace nuTetris
 {
     public class ConcretePieceL : ConcretePiece
     {
-        private readonly int color = 0;
-
         public ConcretePieceL(int c)
         {
-            color = c;
+            Color = c;
 
             RowData[] data = Shape[0].GetData();
 
@@ -70,13 +68,11 @@ namespace nuTetris
                 data[3].Set(rowdata4);
             }
 
-            computeMinBoundingBox();
+            ComputeMinBoundingBox();
 
         }
 
-        public override Piece Clone()
-        {
-            return new ConcretePieceL(color);
-        }
+        public int Color { get; } = 0;
+        public override Piece Clone() => new ConcretePieceL(Color);
     }
 }
