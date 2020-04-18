@@ -4,12 +4,6 @@
  *
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace nuTetris
 {
     /*
@@ -27,54 +21,54 @@ namespace nuTetris
         public static int ORIENTATIONS = 4;
 
         /** Clone the piece returning a unique pointer to it */
-        public abstract Piece clone();
+        public abstract Piece Clone();
 
         /** Set column offset to center the piece within the row */
-        public abstract void moveCenter(int rowLength);
+        public abstract void MoveCenter(int rowLength);
 
         /** Increments game-grid related piece column offset */
-        public abstract void moveRight();
+        public abstract void MoveRight();
 
         /** Decrements game-grid related piece column offset */
-        public abstract void moveLeft();
+        public abstract void MoveLeft();
 
         /** Increment game-grid related piece row offset */
-        public abstract void moveDown();
+        public abstract void MoveDown();
 
         /** Rotate the piece clockwise */
-        public abstract void rotateCw();
+        public abstract void RotateCw();
 
         /** Rotate the piece anti-clockwise */
-        public abstract void rotateAcw();
+        public abstract void RotateAcw();
 
         /** Undo the last movement command */
-        public abstract void undo();
+        public abstract void Undo();
 
         /** Get a color attribute at piece-grid coordinates col, row */
-        public abstract int getAt(int col, int row);
+        public abstract int GetAt(int col, int row);
 
         /** Get game-grid piece column offset */
-        public abstract int getCol();
+        public abstract int GetCol();
 
         /** Get game-grid piece row offset */
-        public abstract int getRow();
+        public abstract int GetRow();
 
         /** Get the count of empty piece-grid columns on the left side of piece shape */
-        public abstract int getLeftMargin();
+        public abstract int GetLeftMargin();
 
         /** Get the count of empty piece-grid columns on the right side of piece shape */
-        public abstract int getRightMargin();
+        public abstract int GetRightMargin();
 
         /** Get the count of empty piece-grid rows on the top side of piece shape */
-        public abstract int getTopMargin();
+        public abstract int GetTopMargin();
 
         /** Get the count of empty piece-grid rows on the bottom side of piece shape */
-        public abstract int getBottomMargin();
+        public abstract int GetBottomMargin();
 
         /** Get piece orientation code */
-        public abstract int getOrientation();
+        public abstract int GetOrientation();
 
         /** Get piece shape data */
-        public abstract ShapeData getShape();
+        public abstract ShapeData GetShape();
     }
 }

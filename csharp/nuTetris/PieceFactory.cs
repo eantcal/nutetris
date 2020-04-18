@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace nuTetris
 {
@@ -12,56 +9,30 @@ namespace nuTetris
      */
     public class PieceFactory
     {
-
         /** Return the factory instance */
-        public static PieceFactory getInstance()
-        {
-            return instance;
-        }
+        public static PieceFactory GetInstance() => instance;
 
         /** Clone a new piece */
-        public Piece make(int pieceIdx)
-        {
-            return catalog.ElementAt(pieceIdx).clone();
-        }
+        public Piece Make(int pieceIdx) => catalog.ElementAt(pieceIdx).Clone();
 
         /** Get the count of pieces within the catalog */
-        public int getPieceCatalogSize()
-        {
-            return catalog.Count();
-        }
+        public int PieceCatalogSize => catalog.Count();
 
         /** Add a piece into the catalog */
-        protected void addCatalog(Piece piece)
-        {
-            catalog.Add(piece);
-        }
+        protected void AddCatalog(Piece piece) => catalog.Add(piece);
 
         /** Construct a catalog of pieces */
         public PieceFactory()
         {
             int i = 0;
-                        
-            ConcretePieceL L = new ConcretePieceL(++i);
-            addCatalog(L);
 
-            ConcretePieceI I = new ConcretePieceI(++i);
-            addCatalog(I);
-
-            ConcretePieceJ J = new ConcretePieceJ(++i);
-            addCatalog(J);
-
-            ConcretePieceO O = new ConcretePieceO(++i);
-            addCatalog(O);
-
-            ConcretePieceS S = new ConcretePieceS(++i);
-            addCatalog(S);
-
-            ConcretePieceZ Z = new ConcretePieceZ(++i);
-            addCatalog(Z);
-
-            ConcretePieceT T = new ConcretePieceT(++i);
-            addCatalog(T);
+            AddCatalog(new ConcretePieceL(++i));
+            AddCatalog(new ConcretePieceI(++i));
+            AddCatalog(new ConcretePieceJ(++i));
+            AddCatalog(new ConcretePieceO(++i));
+            AddCatalog(new ConcretePieceS(++i));
+            AddCatalog(new ConcretePieceZ(++i));
+            AddCatalog(new ConcretePieceT(++i));
         }
 
         private List<Piece> catalog = new List<Piece>();

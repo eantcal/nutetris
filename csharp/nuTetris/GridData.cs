@@ -4,12 +4,6 @@
  *
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace nuTetris
 {
     /** Holds grid data used by renderer to draw the scene */
@@ -32,9 +26,9 @@ namespace nuTetris
             }
         }
 
-        public RowData[] getData() => data;
+        public RowData[] GetData() => data;
 
-        public void setRow(int rowindex, RowData rowdata)
+        public void SetRow(int rowindex, RowData rowdata)
         {
             if (rowindex >= 0 && rowindex < data.Length)
             {
@@ -42,7 +36,7 @@ namespace nuTetris
             }
         }
 
-        public GridData clone()
+        public GridData Clone()
         {
             GridData obj = new GridData(cols, rows);
 
@@ -50,15 +44,15 @@ namespace nuTetris
             {
                 RowData row = new RowData(cols);
                 row.set(data[rowIdx].get());
-                obj.setRow(rowIdx, row);
+                obj.SetRow(rowIdx, row);
             }
 
             return obj;
         }
 
-        public RowData getRow(int rowIdx) => data[rowIdx];
+        public RowData GetRow(int rowIdx) => data[rowIdx];
 
-        public void setData(RowData[] data)
+        public void SetData(RowData[] data)
         {
             this.data = data;
         }

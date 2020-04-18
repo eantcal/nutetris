@@ -4,11 +4,6 @@
  *
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Drawing;
 
 namespace nuTetris
@@ -55,26 +50,26 @@ namespace nuTetris
         {
             // super.paintComponent(g);
 
-            for (int y = 0; y < grid.getRowsCount(); ++y)
+            for (int y = 0; y < grid.GetRowsCount(); ++y)
             {
-                for (int x = 0; x < grid.getColsCount(); ++x)
+                for (int x = 0; x < grid.ColsCount; ++x)
                 {
-                    int col = grid.getAt(x, y);
+                    int col = grid.GetAt(x, y);
 
-                    System.Drawing.SolidBrush myBrush = 
+                    System.Drawing.SolidBrush myBrush =
                         new System.Drawing.SolidBrush(idx2color(col));
-                    
-                    g.FillRectangle(myBrush, 
-                        new Rectangle(xOffset + x * brickSize, 
-                                      yOffset + y * brickSize, 
+
+                    g.FillRectangle(myBrush,
+                        new Rectangle(xOffset + x * brickSize,
+                                      yOffset + y * brickSize,
                                       brickSize, brickSize));
 
                     System.Drawing.Pen myPen = new System.Drawing.Pen(
                         col > 0 ? System.Drawing.Color.DarkGray : System.Drawing.Color.Black);
 
-                    g.DrawRectangle(myPen, 
-                        new Rectangle(xOffset + x * brickSize, 
-                                      yOffset + y * brickSize, 
+                    g.DrawRectangle(myPen,
+                        new Rectangle(xOffset + x * brickSize,
+                                      yOffset + y * brickSize,
                                       brickSize, brickSize));
 
                     myBrush.Dispose();
@@ -90,8 +85,8 @@ namespace nuTetris
                 g.DrawRectangle(newPen,
                     new Rectangle(xOffset - 1,
                                   yOffset - 1,
-                                  brickSize * grid.getColsCount() + 2,
-                                  brickSize * grid.getRowsCount() + 2));
+                                  brickSize * grid.ColsCount + 2,
+                                  brickSize * grid.GetRowsCount() + 2));
 
                 newPen.Dispose();
             }

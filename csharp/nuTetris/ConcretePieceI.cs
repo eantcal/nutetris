@@ -4,12 +4,6 @@
  *
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace nuTetris
 {
     public class ConcretePieceI : ConcretePiece
@@ -19,64 +13,67 @@ namespace nuTetris
         public ConcretePieceI(int c)
         {
             color = c;
-
-            RowData[] data = Shape[0].getData();
-
-            {
-                int[] rowdata1 = { 0, 0, 0, 0 };
-                int[] rowdata2 = { c, c, c, c };
-                int[] rowdata3 = { 0, 0, 0, 0 };
-                int[] rowdata4 = { 0, 0, 0, 0 };
-                Shape[0].getData()[0].set(rowdata1);
-                Shape[0].getData()[1].set(rowdata2);
-                Shape[0].getData()[2].set(rowdata3);
-                Shape[0].getData()[3].set(rowdata4);
-            }
-
-            data = Shape[1].getData();
-
-            {
-                int[] rowdata1 = { 0, 0, c, 0 };
-                int[] rowdata2 = { 0, 0, c, 0 };
-                int[] rowdata3 = { 0, 0, c, 0 };
-                int[] rowdata4 = { 0, 0, c, 0 };
-                Shape[0].getData()[0].set(rowdata1);
-                Shape[0].getData()[1].set(rowdata2);
-                Shape[0].getData()[2].set(rowdata3);
-                Shape[0].getData()[3].set(rowdata4);
-            }
-
-            data = Shape[2].getData();
+            RowData[] data = Shape[0].GetData();
 
             {
                 int[] rowdata1 = { 0, 0, 0, 0 };
                 int[] rowdata2 = { c, c, c, c };
                 int[] rowdata3 = { 0, 0, 0, 0 };
                 int[] rowdata4 = { 0, 0, 0, 0 };
-                Shape[0].getData()[0].set(rowdata1);
-                Shape[0].getData()[1].set(rowdata2);
-                Shape[0].getData()[2].set(rowdata3);
-                Shape[0].getData()[3].set(rowdata4);
+
+                data[0].set(rowdata1);
+                data[1].set(rowdata2);
+                data[2].set(rowdata3);
+                data[3].set(rowdata4);
             }
 
-            data = Shape[3].getData();
+            data = Shape[1].GetData();
 
             {
                 int[] rowdata1 = { 0, 0, c, 0 };
                 int[] rowdata2 = { 0, 0, c, 0 };
                 int[] rowdata3 = { 0, 0, c, 0 };
                 int[] rowdata4 = { 0, 0, c, 0 };
-                Shape[0].getData()[0].set(rowdata1);
-                Shape[0].getData()[1].set(rowdata2);
-                Shape[0].getData()[2].set(rowdata3);
-                Shape[0].getData()[3].set(rowdata4);
+
+                data[0].set(rowdata1);
+                data[1].set(rowdata2);
+                data[2].set(rowdata3);
+                data[3].set(rowdata4);
+            }
+
+            data = Shape[2].GetData();
+
+            {
+                int[] rowdata1 = { 0, 0, 0, 0 };
+                int[] rowdata2 = { c, c, c, c };
+                int[] rowdata3 = { 0, 0, 0, 0 };
+                int[] rowdata4 = { 0, 0, 0, 0 };
+
+                data[0].set(rowdata1);
+                data[1].set(rowdata2);
+                data[2].set(rowdata3);
+                data[3].set(rowdata4);
+            }
+
+            data = Shape[3].GetData();
+
+            {
+                int[] rowdata1 = { 0, 0, c, 0 };
+                int[] rowdata2 = { 0, 0, c, 0 };
+                int[] rowdata3 = { 0, 0, c, 0 };
+                int[] rowdata4 = { 0, 0, c, 0 };
+
+                data[0].set(rowdata1);
+                data[1].set(rowdata2);
+                data[2].set(rowdata3);
+                data[3].set(rowdata4);
             }
 
             computeMinBoundingBox();
 
         }
 
-        public override Piece clone()
+        public override Piece Clone()
         {
             return new ConcretePieceI(color);
         }

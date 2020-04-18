@@ -4,12 +4,6 @@
  *
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace nuTetris
 {
     public class ConcretePieceZ : ConcretePiece
@@ -20,7 +14,7 @@ namespace nuTetris
         {
             color = c;
 
-            RowData[] data = Shape[0].getData();
+            RowData[] data = Shape[0].GetData();
 
             {
                 int[] rowdata1 = { 0, 0, 0, 0 };
@@ -34,7 +28,7 @@ namespace nuTetris
                 data[3].set(rowdata4);
             }
 
-            data = Shape[1].getData();
+            data = Shape[1].GetData();
 
             {
                 int[] rowdata1 = { 0, 0, 0, c };
@@ -48,7 +42,7 @@ namespace nuTetris
                 data[3].set(rowdata4);
             }
 
-            data = Shape[2].getData();
+            data = Shape[2].GetData();
 
             {
                 int[] rowdata1 = { 0, 0, 0, 0 };
@@ -62,7 +56,7 @@ namespace nuTetris
                 data[3].set(rowdata4);
             }
 
-            data = Shape[3].getData();
+            data = Shape[3].GetData();
 
             {
                 int[] rowdata1 = { 0, 0, 0, c };
@@ -80,7 +74,7 @@ namespace nuTetris
 
         }
 
-        public override Piece clone()
+        public override Piece Clone()
         {
             return new ConcretePieceZ(color);
         }

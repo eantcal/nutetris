@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace nuTetris
@@ -30,7 +23,7 @@ namespace nuTetris
             myTimer.Start();
 
             gm = new GameManager(this);
-    }
+        }
 
         private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
@@ -39,12 +32,12 @@ namespace nuTetris
             System.Drawing.Graphics formGraphics;
             formGraphics = this.CreateGraphics();
 
-            if (tickCounter--<1)
+            if (tickCounter-- < 1)
             {
-                gm.timerTick();
+                gm.TimerTick();
                 tickCounter = TICK_COUNTER_RESET;
             }
-            
+
             gm.run(formGraphics);
             formGraphics.Dispose();
 
@@ -52,11 +45,11 @@ namespace nuTetris
         }
 
 
-        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e) 
+        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {
             System.Drawing.Graphics formGraphics;
             formGraphics = this.CreateGraphics();
-            gm.renderScene(formGraphics);
+            gm.RenderScene(formGraphics);
             formGraphics.Dispose();
         }
 

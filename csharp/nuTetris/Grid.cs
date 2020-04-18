@@ -4,11 +4,7 @@
  *
  */
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace nuTetris
 {
@@ -32,11 +28,11 @@ namespace nuTetris
         /** Place-piece operation result type */
         public enum PlaceSt
         {
-            OK, 
-            CROSS_RIGHT_BOUNDARY, 
-            CROSS_LEFT_BOUNDARY, 
-            CROSS_TOP_BOUNDARY, 
-            NO_ROOM_FOR_PIECE, 
+            OK,
+            CROSS_RIGHT_BOUNDARY,
+            CROSS_LEFT_BOUNDARY,
+            CROSS_TOP_BOUNDARY,
+            NO_ROOM_FOR_PIECE,
             TOUCH_DOWN
         }
 
@@ -54,52 +50,40 @@ namespace nuTetris
         }
 
         /** Get columns count */
-        public int getColsCount()
-        {
-            return cols;
-        }
+        public int ColsCount => cols;
 
         /** Get rows count */
-        public int getRowsCount()
-        {
-            return rows;
-        }
+        public int GetRowsCount() => rows;
 
         /** Get value of to a cell at coordinates x,y */
-        public int getAt(int x, int y)
+        public int GetAt(int x, int y)
         {
-            RowData[] row = (RowData[])gridMap.getData();
+            RowData[] row = (RowData[])gridMap.GetData();
             return row[y].get()[x];
         }
 
         /** Clear the grid content */
-        public void clear()
-        {
-            gridMap = new GridData(cols, rows);
-        }
+        public void Clear() => gridMap = new GridData(cols, rows);
 
         /** Select new piece */
-        public void setCurrentPiece(Piece piece)
-        {
-            currentPiece = piece;
-        }
+        public void SetCurrentPiece(Piece piece) => currentPiece = piece;
 
         /** Move selected piece to another grid */
-        public void movePieceToGrid(Grid grid)
+        public void MovePieceToGrid(Grid grid)
         {
-            currentPiece.moveCenter(cols);
+            currentPiece.MoveCenter(cols);
             grid.currentPiece = currentPiece;
             currentPiece = null;
         }
 
         /** Get a list of completed rows */
-        public HashSet<int> getFullRows()
+        public HashSet<int> GetFullRows()
         {
             HashSet<int> s = new HashSet<int>();
 
             for (int i = 0; i < rows; ++i)
             {
-                if (isFullRow(i))
+                if (IsFullRow(i))
                     s.Add(i);
             }
 
@@ -107,7 +91,7 @@ namespace nuTetris
         }
 
         /** Fill the cells of a row using a given color attribute */
-        public void fillRow(int rowIdx, int attr)
+        public void FillRow(int rowIdx, int attr)
         {
 
             RowData rowdata = new RowData(cols);
@@ -121,13 +105,13 @@ namespace nuTetris
 
             rowdata.set(val);
 
-            gridMap.setRow(rowIdx, rowdata);
+            gridMap.SetRow(rowIdx, rowdata);
         }
 
         /** Remove full rows and compact the other cells */
-        public void removeFullRows()
+        public void RemoveFullRows()
         {
-            HashSet<int> full_rows = (HashSet<int>)getFullRows();
+            HashSet<int> full_rows = (HashSet<int>)GetFullRows();
 
             GridData gridData = new GridData(cols, rows);
 
@@ -136,7 +120,7 @@ namespace nuTetris
             {
                 if (!full_rows.Contains(i))
                 {
-                    gridData.setRow(j, gridMap.getRow(i));
+                    gridData.SetRow(j, gridMap.GetRow(i));
                     --j;
                 }
             }
@@ -145,65 +129,56 @@ namespace nuTetris
         }
 
         /** Place current piece onto the grid. */
-        public PlaceSt placePiece()
-        {
-            return mergePiece(MergeType.MERGE_PUT);
-        }
+        public PlaceSt PlacePiece => MergePiece(MergeType.MERGE_PUT);
 
         /** Remove piece from the grid */
-        public void removePiece()
-        {
-            mergePiece(MergeType.MERGE_REMOVE);
-        }
+        public void RemovePiece() => MergePiece(MergeType.MERGE_REMOVE);
 
         /** Get a reference to the current piece */
-        public Piece getCurrentPiece()
-        {
-            return currentPiece;
-        }
+        public Piece CurrentPiece => currentPiece;
 
         /** Check if piece crosses the grid boundaries */
-        protected PlaceSt checkBoundaries()
+        protected PlaceSt CheckBoundaries()
         {
             if (currentPiece == null)
                 return PlaceSt.OK;
 
             Piece piece = currentPiece;
 
-            int pieceX = piece.getCol();
-            int pieceY = piece.getRow();
+            int pieceX = piece.GetCol();
+            int pieceY = piece.GetRow();
 
             // Check if piece crosses the grid borders
-            if (pieceX + piece.getLeftMargin() < 0)
+            if (pieceX + piece.GetLeftMargin() < 0)
                 return PlaceSt.CROSS_LEFT_BOUNDARY;
 
-            if (pieceY + piece.getTopMargin() < 0)
+            if (pieceY + piece.GetTopMargin() < 0)
                 return PlaceSt.CROSS_TOP_BOUNDARY;
 
-            if ((pieceX + Piece.COLS - piece.getRightMargin()) > getColsCount())
+            if ((pieceX + Piece.COLS - piece.GetRightMargin()) > ColsCount)
                 return PlaceSt.CROSS_RIGHT_BOUNDARY;
 
-            if ((pieceY + Piece.ROWS - piece.getBottomMargin()) > getRowsCount())
+            if ((pieceY + Piece.ROWS - piece.GetBottomMargin()) > GetRowsCount())
                 return PlaceSt.TOUCH_DOWN;
 
             return PlaceSt.OK;
         }
 
         /** Merge the piece content (cells) in the grid */
-        protected PlaceSt mergePiece(MergeType mode)
+        protected PlaceSt MergePiece(MergeType mode)
         {
-            PlaceSt st = checkBoundaries();
+            PlaceSt st = CheckBoundaries();
 
             if (st != PlaceSt.OK)
                 return st;
 
             Piece piece = currentPiece;
 
-            int pieceX = piece.getCol();
-            int pieceY = piece.getRow();
+            int pieceX = piece.GetCol();
+            int pieceY = piece.GetRow();
 
             // Copy cells data onto map_data in order to preserve it before merging
-            GridData draftMap = gridMap.clone();
+            GridData draftMap = gridMap.Clone();
 
             for (int y = 0; y < Piece.ROWS; ++y)
             {
@@ -212,16 +187,16 @@ namespace nuTetris
                     int gridCol = pieceX + x;
                     int gridRow = pieceY + y;
 
-                    if (gridCol < 0 || 
-                        gridCol >= getColsCount() || 
-                        gridRow < 0 || 
-                        gridRow >= getRowsCount())
+                    if (gridCol < 0 ||
+                        gridCol >= ColsCount ||
+                        gridRow < 0 ||
+                        gridRow >= GetRowsCount())
                     {
                         continue;
                     }
 
-                    int gridCell = draftMap.getRow(gridRow).get()[gridCol];
-                    int pieceCell = piece.getAt(x, y);
+                    int gridCell = draftMap.GetRow(gridRow).get()[gridCol];
+                    int pieceCell = piece.GetAt(x, y);
 
                     if (mode == MergeType.MERGE_PUT)
                     {
@@ -231,14 +206,14 @@ namespace nuTetris
                         // (cells data modification will be not committed)
                         if (gridCell != 0 && pieceCell != 0)
                         {
-                            return (pieceY - piece.getTopMargin()) < 1 ? 
+                            return (pieceY - piece.GetTopMargin()) < 1 ?
                                 PlaceSt.NO_ROOM_FOR_PIECE : PlaceSt.TOUCH_DOWN;
                         }
 
                         // Copy piece (or delete) cell content into the draft data map
                         if (pieceCell != 0)
                         {
-                            draftMap.getRow(gridRow).get()[gridCol] = pieceCell;
+                            draftMap.GetRow(gridRow).get()[gridCol] = pieceCell;
                         }
                     }
                     else
@@ -247,7 +222,7 @@ namespace nuTetris
                         // map
                         if (pieceCell != 0)
                         {
-                            draftMap.getRow(gridRow).get()[gridCol] = 0;
+                            draftMap.GetRow(gridRow).get()[gridCol] = 0;
                         }
                     }
                 }
@@ -260,10 +235,10 @@ namespace nuTetris
         }
 
         /** Return true if the row is full, false otherwise */
-        private bool isFullRow(int rowIdx)
+        private bool IsFullRow(int rowIdx)
         {
             bool ret = true;
-            int[] v = gridMap.getData()[rowIdx].get();
+            int[] v = gridMap.GetData()[rowIdx].get();
 
             for (int i = 0; i < v.Length; ++i)
             {

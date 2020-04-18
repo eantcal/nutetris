@@ -4,12 +4,6 @@
  *
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace nuTetris
 {
     public class ConcretePieceO : ConcretePiece
@@ -29,7 +23,7 @@ namespace nuTetris
 
             for (int rowidx = 0; rowidx < Piece.ROWS; ++rowidx)
             {
-                data = Shape[rowidx].getData();
+                data = Shape[rowidx].GetData();
 
                 data[0].set(rowdata1);
                 data[1].set(rowdata2);
@@ -41,7 +35,7 @@ namespace nuTetris
 
         }
 
-        public override Piece clone()
+        public override Piece Clone()
         {
             return new ConcretePieceO(color);
         }

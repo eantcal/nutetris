@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static nuTetris.InputManager;
 
 namespace nuTetris
 {
@@ -26,14 +22,14 @@ namespace nuTetris
         /** Game input events */
         public enum InputEvent
         {
-            NONE, 
-            MOVE_RIGHT, 
-            MOVE_LEFT, 
-            MOVE_DOWN, 
-            ROTATE_CW, 
-            ROTATE_ACW, 
-            DROP_PIECE, 
-            EXIT, 
+            NONE,
+            MOVE_RIGHT,
+            MOVE_LEFT,
+            MOVE_DOWN,
+            ROTATE_CW,
+            ROTATE_ACW,
+            DROP_PIECE,
+            EXIT,
             PAUSE_GAME
         };
 
@@ -74,7 +70,7 @@ namespace nuTetris
         }
 
         /** Redraw the scene */
-        public void renderScene(System.Drawing.Graphics g)
+        public void RenderScene(System.Drawing.Graphics g)
         {
             String scoreText = String.Concat(score);
 
@@ -85,45 +81,45 @@ namespace nuTetris
         }
 
         /** Revert to previous piece position / orientation */
-        public void undoMovePiece()
+        public void UndoMovePiece()
         {
-            gameGrid.getCurrentPiece().undo();
-            gameGrid.placePiece();
+            gameGrid.CurrentPiece.Undo();
+            gameGrid.PlacePiece;
         }
 
         /** Take a new piece from catalog */
-        public void selectNewPiece()
+        public void SelectNewPiece()
         {
-            previewCanvas.movePieceToGrid(gameGrid);
+            previewCanvas.MovePieceToGrid(gameGrid);
 
-            int catalog_size = pFactory.getPieceCatalogSize();
+            int catalog_size = pFactory.PieceCatalogSize;
 
-            previewCanvas.setCurrentPiece(
-                pFactory.make(randomGenerator.Next(catalog_size)));
+            previewCanvas.SetCurrentPiece(
+                pFactory.Make(randomGenerator.Next(catalog_size)));
 
-            previewCanvas.clear();
-            previewCanvas.placePiece();
+            previewCanvas.Clear();
+            previewCanvas.PlacePiece;
         }
 
         /** Acknowledge last input event */
-        public void ackInputEvent()
+        public void AckInputEvent()
         {
             lastInput = InputEvent.NONE;
         }
 
         /** Remove the piece from the game area */
-        private void removePiece()
+        private void RemovePiece()
         {
-            gameGrid.removePiece();
+            gameGrid.RemovePiece();
         }
 
-        public void timerTick()
+        public void TimerTick()
         {
             inputMgr.tick();
         }
 
         /** Process any new input event */
-        void processInput()
+        void ProcessInput()
         {
             InputManager.EventType ev = inputMgr.poll();
 
@@ -173,31 +169,22 @@ namespace nuTetris
          * Set / reset pieceDropped state which causes a series of move down event in
          * order to speed up piece falling
          */
-        public void dropPiece(bool st)
+        public void DropPiece(bool st)
         {
             pieceDropped = st;
 
             if (!st)
-                ackInputEvent();
+                AckInputEvent();
         }
 
         /** Gets a list of completed rows */
-        public HashSet<int> getFullRows()
-        {
-            return gameGrid.getFullRows();
-        }
+        public HashSet<int> FullRows => gameGrid.GetFullRows();
 
         /** Fills the cells of a whole row using a given color attribute */
-        public void fillRow(int rowIdx, int attr)
-        {
-            gameGrid.fillRow(rowIdx, attr);
-        }
+        public void FillRow(int rowIdx, int attr) => gameGrid.FillRow(rowIdx, attr);
 
         /** Remove the completed rows, moving down the other cells */
-        public void removeFullRows()
-        {
-            gameGrid.removeFullRows();
-        }
+        public void RemoveFullRows() => gameGrid.RemoveFullRows();
 
         /** Processes an input and handles it ! if it is related to piece movement */
         public InputEvent handlePieceMovements()
@@ -212,27 +199,27 @@ namespace nuTetris
             switch (input)
             {
                 case InputEvent.MOVE_RIGHT:
-                    gameGrid.getCurrentPiece().moveRight();
+                    gameGrid.CurrentPiece.MoveRight();
                     break;
 
                 case InputEvent.MOVE_LEFT:
-                    gameGrid.getCurrentPiece().moveLeft();
+                    gameGrid.CurrentPiece.MoveLeft();
                     break;
 
                 case InputEvent.MOVE_DOWN:
-                    gameGrid.getCurrentPiece().moveDown();
+                    gameGrid.CurrentPiece.MoveDown();
                     break;
 
                 case InputEvent.ROTATE_CW:
-                    gameGrid.getCurrentPiece().rotateCw();
+                    gameGrid.CurrentPiece.RotateCw();
                     break;
 
                 case InputEvent.ROTATE_ACW:
-                    gameGrid.getCurrentPiece().rotateAcw();
+                    gameGrid.CurrentPiece.RotateAcw();
                     break;
 
                 case InputEvent.DROP_PIECE:
-                    dropPiece(true);
+                    DropPiece(true);
                     break;
                 default:
                     break;
@@ -242,7 +229,7 @@ namespace nuTetris
         }
 
         /** Implement the PLAYING state */
-        public void play(System.Drawing.Graphics g)
+        public void Play(System.Drawing.Graphics g)
         {
             // Input is processed using chain-of-responsibility pattern
             InputEvent input = handlePieceMovements();
@@ -250,7 +237,7 @@ namespace nuTetris
             switch (input)
             {
                 case InputEvent.NONE:
-                    processInput();
+                    ProcessInput();
                     return;
 
                 case InputEvent.EXIT:
@@ -263,7 +250,7 @@ namespace nuTetris
                     break;
             }
 
-            Grid.PlaceSt placeStatus = gameGrid.placePiece();
+            Grid.PlaceSt placeStatus = gameGrid.PlacePiece;
 
             HashSet<int> fullRows;
 
@@ -273,12 +260,13 @@ namespace nuTetris
                 gameState = GameState.GAMEOVER;
 
             }
-            else if (placeStatus == Grid.PlaceSt.TOUCH_DOWN) {
+            else if (placeStatus == Grid.PlaceSt.TOUCH_DOWN)
+            {
                 // Revert to last (valid) position
-                undoMovePiece();
+                UndoMovePiece();
 
                 // Get the full rows list
-                fullRows = getFullRows();
+                fullRows = FullRows;
 
                 if (fullRows.Count > 0)
                 {
@@ -286,60 +274,61 @@ namespace nuTetris
 
                     foreach (int row in fullRows)
                     {
-                        fillRow(row, -1);
+                        FillRow(row, -1);
                         scoreK *= 2;
                     }
 
                     score += scoreK * FULL_ROW_SCORE_ODM;
                 }
 
-                ackInputEvent();
+                AckInputEvent();
 
-                renderScene(g);
-                selectNewPiece();
+                RenderScene(g);
+                SelectNewPiece();
 
                 Thread.Sleep(fullrowBlinkDalayMs);
 
-                removeFullRows();
-                renderScene(g);
+                RemoveFullRows();
+                RenderScene(g);
 
                 // Turn-off release mode
-                dropPiece(false);
+                DropPiece(false);
 
                 return;
             }
-            else {
+            else
+            {
                 if (placeStatus != Grid.PlaceSt.OK)
-                    undoMovePiece();
-                    
-                renderScene(g);
-                
+                    UndoMovePiece();
+
+                RenderScene(g);
+
                 // Remove the piece from game area
-                removePiece();
-                processInput();
+                RemovePiece();
+                ProcessInput();
             }
         }
 
         /** Implement the BEING state */
-        public void setup()
+        public void Setup()
         {
-            gameGrid.clear();
-            previewCanvas.clear();
+            gameGrid.Clear();
+            previewCanvas.Clear();
 
-            int catalogSize = pFactory.getPieceCatalogSize();
+            int catalogSize = pFactory.PieceCatalogSize;
 
-            gameGrid.setCurrentPiece(
-                pFactory.make(randomGenerator.Next(catalogSize)));
+            gameGrid.SetCurrentPiece(
+                pFactory.Make(randomGenerator.Next(catalogSize)));
 
-            gameGrid.getCurrentPiece().moveCenter(
-                gameGrid.getColsCount());
+            gameGrid.CurrentPiece.MoveCenter(
+                gameGrid.ColsCount);
 
-            previewCanvas.setCurrentPiece(
-                pFactory.make(randomGenerator.Next(catalogSize)));
+            previewCanvas.SetCurrentPiece(
+                pFactory.Make(randomGenerator.Next(catalogSize)));
 
-            previewCanvas.placePiece();
+            previewCanvas.PlacePiece;
 
-            dropPiece(false);
+            DropPiece(false);
 
             gameState = GameState.PLAYING;
         }
@@ -350,17 +339,17 @@ namespace nuTetris
             // Input is processed using chain-of-responsibility pattern
             InputEvent input = Input;
 
-            renderScene(g);
+            RenderScene(g);
 
             if (input == InputEvent.EXIT)
                 gameState = GameState.BEGIN;
 
-            processInput();
+            ProcessInput();
 
             String title = "Game Over";
             String message = "Do you want to restart the game ?";
 
-            if ( MessageBox.Show(message, title, MessageBoxButtons.YesNo) != DialogResult.Yes)
+            if (MessageBox.Show(message, title, MessageBoxButtons.YesNo) != DialogResult.Yes)
             {
                 System.Environment.Exit(0);
             }
@@ -377,11 +366,11 @@ namespace nuTetris
             switch (gameState)
             {
                 case GameState.BEGIN:
-                    setup();
+                    Setup();
                     break;
 
                 case GameState.PLAYING:
-                    play(g);
+                    Play(g);
                     break;
 
                 case GameState.GAMEOVER:

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Input;
+﻿using System.Windows.Forms;
 
 namespace nuTetris
 {
@@ -71,7 +65,7 @@ namespace nuTetris
         }
 
         private readonly object syncLock = new object();
-        
+
         /** Returns last event detected */
         public EventType poll()
         {
@@ -98,4 +92,4 @@ namespace nuTetris
     }
 
 }
-    
+

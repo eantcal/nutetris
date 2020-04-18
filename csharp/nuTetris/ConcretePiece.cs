@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace nuTetris
+﻿namespace nuTetris
 {
     public class ConcretePiece : Piece
     {
@@ -49,30 +43,30 @@ namespace nuTetris
             }
         }
 
-       public override Piece clone()
+        public override Piece Clone()
         {
             return new ConcretePiece();
         }
 
-       public override void moveRight()
+        public override void MoveRight()
         {
             undoData.copyFrom(data);
             ++data.posX;
         }
 
-       public override void moveLeft()
+        public override void MoveLeft()
         {
             undoData.copyFrom(data);
             --data.posX;
         }
 
-       public override void moveDown()
+        public override void MoveDown()
         {
             undoData.copyFrom(data);
             ++data.posY;
         }
 
-       public override void rotateCw()
+        public override void RotateCw()
         {
             undoData.copyFrom(data);
             ++data.orientation;
@@ -88,7 +82,7 @@ namespace nuTetris
             if (Shape.Length == 0)
                 return;
 
-            ShapeData block = Shape[getOrientation()];
+            ShapeData block = Shape[GetOrientation()];
 
             int minX = -1;
             int maxX = -1;
@@ -96,7 +90,7 @@ namespace nuTetris
             int maxY = -1;
             int y = 0;
 
-            foreach (RowData row in block.getData())
+            foreach (RowData row in block.GetData())
             {
                 int x = 0;
 
@@ -129,8 +123,8 @@ namespace nuTetris
             data.bottomMargin = Piece.ROWS - maxY - 1;
         }
 
-    
-        public override void rotateAcw()
+
+        public override void RotateAcw()
         {
             undoData.copyFrom(data);
 
@@ -142,59 +136,59 @@ namespace nuTetris
             computeMinBoundingBox();
         }
 
-        public override void undo()
+        public override void Undo()
         {
             data.copyFrom(undoData);
         }
 
-        public override int getAt(int col, int row)
+        public override int GetAt(int col, int row)
         {
-            ShapeData block = Shape[getOrientation()];
-            RowData row_data = block.getRow(row);
+            ShapeData block = Shape[GetOrientation()];
+            RowData row_data = block.GetRow(row);
             return row_data.get()[col];
         }
 
-        public override int getCol()
+        public override int GetCol()
         {
             return data.posX;
         }
 
-        public override int getRow()
+        public override int GetRow()
         {
             return data.posY;
         }
 
-        public override int getLeftMargin()
+        public override int GetLeftMargin()
         {
             return data.leftMargin;
         }
 
-        public override int getRightMargin()
+        public override int GetRightMargin()
         {
             return data.rightMargin;
         }
 
-        public override int getTopMargin()
+        public override int GetTopMargin()
         {
             return data.topMargin;
         }
 
-        public override int getBottomMargin()
+        public override int GetBottomMargin()
         {
             return data.bottomMargin;
         }
 
-        public override int getOrientation()
+        public override int GetOrientation()
         {
             return data.orientation;
         }
 
-        public override ShapeData getShape()
+        public override ShapeData GetShape()
         {
             return Shape[data.orientation];
         }
 
-        public override void moveCenter(int rowLength)
+        public override void MoveCenter(int rowLength)
         {
             data.posX = (rowLength + (Piece.COLS - data.leftMargin
                     - data.rightMargin)) / 2;
