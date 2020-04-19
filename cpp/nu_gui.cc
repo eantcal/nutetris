@@ -16,6 +16,7 @@
 
 /* -------------------------------------------------------------------------- */
 
+#ifndef TEXT_MODE
 #include "nu_gui.h"
 
 #ifdef _WIN32
@@ -1022,5 +1023,6 @@ int gui_t::get_window_dy() noexcept
 
 
 #endif // ... LINUX
+#endif 
 
 

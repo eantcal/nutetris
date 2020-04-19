@@ -16,6 +16,7 @@
 
 /* -------------------------------------------------------------------------- */
 
+#ifndef TEXT_MODE
 #include "tetris_gdimode_renderer.h"
 #include "nu_gui.h"
 
@@ -233,4 +234,6 @@ void gdimode_renderer_t::_draw_score(const game_data_t& game_data) noexcept
 
 
 /* -------------------------------------------------------------------------- */
+
+#endif // TEXT_MODE
 

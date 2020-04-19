@@ -19,6 +19,8 @@
 #ifndef __NU_GUI_H__
 #define __NU_GUI_H__
 
+#ifndef TEXT_MODE
+
 #include <vector>
 #include <string>
 
@@ -89,5 +91,7 @@ public:
 
 
 /* -------------------------------------------------------------------------- */
+
+#endif // TEXT_MODE
 
 #endif //__NU_OS_GUI_H__
