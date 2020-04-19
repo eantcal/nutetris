@@ -82,13 +82,13 @@ public:
    virtual ~grid_t() {}
 
    //! Gets columns count
-   virtual const coord_t get_cols_count() const noexcept final
+   virtual const coord_t& get_cols_count() const noexcept final
    {
       return _cols;
    }
 
    //! Gets rows count
-   virtual const coord_t get_rows_count() const noexcept final
+   virtual const coord_t& get_rows_count() const noexcept final
    {
       return _rows;
    }

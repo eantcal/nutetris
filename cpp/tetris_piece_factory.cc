@@ -41,7 +41,7 @@ piece_factory_t& piece_factory_t::get_instance()
 
 piece_t::handle_t piece_factory_t::make(size_t piece_idx)
 {
-   if (piece_idx < 0 || piece_idx > _piece_catalog.size())
+   if (piece_idx > _piece_catalog.size())
       throw exception_t("index out of range");
 
    // Clones the selected piece from the catalog

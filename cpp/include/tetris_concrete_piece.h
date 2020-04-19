@@ -48,11 +48,6 @@ protected:
    {
    }
 
-
-   //! Holds the piece color attribute 
-   col_t _color_idx = 0;
-
-
    //! @brief Piece movement related data structure
    struct data_t
    {
@@ -76,6 +71,10 @@ protected:
 
    //! Holds previous piece position and orientation
    data_t _undo_data;
+
+
+   //! Holds the piece color attribute 
+   col_t _color_idx = 0;
 
 
    //! Computes piece-grid related margins

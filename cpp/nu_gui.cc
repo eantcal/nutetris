@@ -546,7 +546,6 @@ int gui_t::get_window_dy() noexcept
 #include <stdio.h>
 #include <unistd.h>
 #include <thread>
-#include "nu_stb_image.h"
 
 
 /* -------------------------------------------------------------------------- */
@@ -577,7 +576,6 @@ private:
    XColor _xcolor;
    Colormap _cmap;
    GC _gc;
-   XImage * _ximage = nullptr;
 
    int _win_width = 0;
    int _win_height = 0;
@@ -864,54 +862,7 @@ public:
             abs(abs(x2)-abs(x1)), abs(abs(y2)-abs(y1)),
             0, 360*64);
    }
-
-
-/* -------------------------------------------------------------------------- */
-
-   bool plotimage(const std::string& filepath, int x, int y)
-   {
-      const char *filename = filepath.c_str();
-
-      int w = 0;
-      int h = 0;
-      unsigned char* image = nu::image_load( filename, w, h );
-
-      if ( ! image )
-      {
-         return false;
-      }
-
-      XImage * xi = XCreateImage(
-            _display,  
-            DefaultVisual(_display, DefaultScreen(_display)), 
-            DefaultDepth(_display, DefaultScreen(_display)), 
-            ZPixmap, 
-            0, 
-            (char*)image, 
-            w, h, 32, 0);
-
-      if (xi)
-      {
-         // Swap R/B before plot the image 
-         const size_t size = w*h;
-         for (std::size_t i = 0; i < size; ++i)
-         {
-            const auto p = image[(i<<2)]; 
-            image[(i<<2)] = image[(i<<2)+2];
-            image[(i<<2)+2] = p;
-         }
-
-         XPutImage(_display, _xterm_win, _gc, xi, 0, 0, x, y, w, h);
-         _ximage = xi; // Memory of xi and image will be freed later 
-      }
-      else
-      {
-         nu::image_free( image );
-      }
-
-      return true;
-   }
-
+   
 
 /* -------------------------------------------------------------------------- */
 
@@ -923,16 +874,6 @@ public:
          XFreeColors(_display, _cmap, &_xcolor.pixel, 1, 0);
          XFreeGC( _display, _gc );
          XCloseDisplay(_display);
-
-         if (_ximage) 
-         {
-            auto data = _ximage->data;
-
-            _ximage->data = nullptr;
-            XDestroyImage( _ximage);
-
-            nu::image_free( (unsigned char*) data );
-         }
       }
    }
 };
@@ -1112,15 +1053,6 @@ int gui_t::circle(int x, int y, int r, int pw, int col, bool full) noexcept
       gdi_ctx.ellipse(x1, y1, x2, y2);
 
    return 0;
-}
-
-
-/* -------------------------------------------------------------------------- */
-
-int gui_t::plotimage(int x, int y, const std::string& filename) noexcept
-{
-   gdi_ctx_t gdi_ctx(0, gdi_ctx_t::NO_BRUSH, 0 /*TODO*/, 1);
-   return gdi_ctx.plotimage(filename, x, y);
 }
 
 

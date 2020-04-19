@@ -24,7 +24,7 @@
 
 /* -------------------------------------------------------------------------- */
 
-int main(int argc, char* argv[])
+int main()
 {
    auto & game = 
       tetris::make_game_mgr_instance<tetris::graph_game_mgr_t>();

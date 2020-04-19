@@ -169,6 +169,11 @@ game_mgr_t::input_t game_mgr_t::handle_piece_movements() noexcept
    case input_t::DROP_PIECE:
       drop_piece();
       break;
+   
+   case input_t::NONE:
+   case input_t::EXIT:
+   case input_t::PAUSE_GAME:
+      break;
    }
 
    return input;

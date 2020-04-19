@@ -60,7 +60,6 @@ public:
    static gui_t & get_instance() noexcept;
 
    int textout(int x, int y, const std::string& text, int c) noexcept;
-   int plotimage(int x, int y, const std::string& filename) noexcept;
    int line(int x1, int y1, int x2, int y2, int pw=1, int col=WHITE) noexcept;
    int rect(int x, int y, int dx, int dy, int pw=1, int col=WHITE, bool full=false) noexcept;
    int ellipse(int x, int y, int dx, int dy, int pw=1, int col=WHITE, bool full=false) noexcept;

@@ -163,8 +163,6 @@ void gdimode_renderer_t::_draw_grid(
    int cellsize
    ) noexcept
 {
-   std::ostream& os = std::cout;
-
    auto & gui = nu::gui_t::get_instance();
 
    auto zoom = [&](int x) { return x * cellsize; };
