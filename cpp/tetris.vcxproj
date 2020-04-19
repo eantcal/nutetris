@@ -86,6 +86,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS; WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -100,6 +101,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -116,6 +118,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS; WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,6 +137,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS; WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,26 +146,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="input_event_dispatcher.h" />
-    <ClInclude Include="input_device.h" />
-    <ClInclude Include="input_event_listener.h" />
-    <ClInclude Include="keyboard_input_device.h" />
-    <ClInclude Include="nu_gui.h" />
-    <ClInclude Include="nu_terminal_input.h" />
-    <ClInclude Include="tetris_gdimode_renderer.h" />
-    <ClInclude Include="tetris_graph_game_mgr.h" />
-    <ClInclude Include="tetris_grid.h" />
-    <ClInclude Include="tetris_concrete_piece.h" />
-    <ClInclude Include="tetris_game_mgr.h" />
-    <ClInclude Include="tetris_game_state.h" />
-    <ClInclude Include="tetris_input_mgr.h" />
-    <ClInclude Include="tetris_piece.h" />
-    <ClInclude Include="tetris_piece_factory.h" />
-    <ClInclude Include="tetris_renderer.h" />
-    <ClInclude Include="tetris_textmode_renderer.h" />
-    <ClInclude Include="timer_input_device.h" />
-  </ItemGroup>
   <ItemGroup>
     <ClCompile Include="input_event_dispatcher.cc" />
     <ClCompile Include="keyboard_input_device.cc" />
@@ -182,6 +166,30 @@
     <ClCompile Include="tetris_piece_Z.cc" />
     <ClCompile Include="tetris_textmode_renderer.cc" />
     <ClCompile Include="timer_input_device.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\config.h" />
+    <ClInclude Include="include\input_device.h" />
+    <ClInclude Include="include\input_event_dispatcher.h" />
+    <ClInclude Include="include\input_event_listener.h" />
+    <ClInclude Include="include\keyboard_input_device.h" />
+    <ClInclude Include="include\nu_gui.h" />
+    <ClInclude Include="include\nu_stb_image.h" />
+    <ClInclude Include="include\nu_terminal_input.h" />
+    <ClInclude Include="include\stb_image.h" />
+    <ClInclude Include="include\tetris_concrete_piece.h" />
+    <ClInclude Include="include\tetris_config.h" />
+    <ClInclude Include="include\tetris_game_mgr.h" />
+    <ClInclude Include="include\tetris_game_state.h" />
+    <ClInclude Include="include\tetris_gdimode_renderer.h" />
+    <ClInclude Include="include\tetris_graph_game_mgr.h" />
+    <ClInclude Include="include\tetris_grid.h" />
+    <ClInclude Include="include\tetris_input_mgr.h" />
+    <ClInclude Include="include\tetris_piece.h" />
+    <ClInclude Include="include\tetris_piece_factory.h" />
+    <ClInclude Include="include\tetris_renderer.h" />
+    <ClInclude Include="include\tetris_textmode_renderer.h" />
+    <ClInclude Include="include\timer_input_device.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

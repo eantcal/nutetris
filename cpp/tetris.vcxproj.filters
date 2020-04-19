@@ -15,62 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tetris_piece.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="tetris_concrete_piece.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="tetris_piece_factory.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="input_device.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="keyboard_input_device.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="timer_input_device.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="input_event_listener.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="input_event_dispatcher.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="tetris_game_mgr.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="tetris_game_state.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="tetris_renderer.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="tetris_textmode_renderer.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="tetris_grid.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="tetris_input_mgr.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="nu_gui.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="tetris_gdimode_renderer.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="tetris_graph_game_mgr.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="nu_terminal_input.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="tetris_concrete_piece.cc">
       <Filter>Source file</Filter>
     </ClCompile>
@@ -128,5 +72,73 @@
     <ClCompile Include="tetris.cc">
       <Filter>Source file</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\config.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\input_device.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\input_event_dispatcher.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\input_event_listener.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\keyboard_input_device.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nu_gui.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nu_stb_image.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nu_terminal_input.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb_image.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tetris_concrete_piece.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tetris_config.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tetris_game_mgr.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tetris_game_state.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tetris_gdimode_renderer.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tetris_graph_game_mgr.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tetris_grid.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tetris_input_mgr.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tetris_piece.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tetris_piece_factory.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tetris_renderer.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tetris_textmode_renderer.h">
+      <Filter>header file</Filter>
+    </ClInclude>
+    <ClInclude Include="include\timer_input_device.h">
+      <Filter>header file</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
