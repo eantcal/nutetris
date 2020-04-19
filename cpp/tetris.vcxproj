@@ -174,9 +174,7 @@
     <ClInclude Include="include\input_event_listener.h" />
     <ClInclude Include="include\keyboard_input_device.h" />
     <ClInclude Include="include\nu_gui.h" />
-    <ClInclude Include="include\nu_stb_image.h" />
     <ClInclude Include="include\nu_terminal_input.h" />
-    <ClInclude Include="include\stb_image.h" />
     <ClInclude Include="include\tetris_concrete_piece.h" />
     <ClInclude Include="include\tetris_config.h" />
     <ClInclude Include="include\tetris_game_mgr.h" />

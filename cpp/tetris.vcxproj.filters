@@ -92,13 +92,7 @@
     <ClInclude Include="include\nu_gui.h">
       <Filter>header file</Filter>
     </ClInclude>
-    <ClInclude Include="include\nu_stb_image.h">
-      <Filter>header file</Filter>
-    </ClInclude>
     <ClInclude Include="include\nu_terminal_input.h">
-      <Filter>header file</Filter>
-    </ClInclude>
-    <ClInclude Include="include\stb_image.h">
       <Filter>header file</Filter>
     </ClInclude>
     <ClInclude Include="include\tetris_concrete_piece.h">
