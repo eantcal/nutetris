@@ -66,6 +66,9 @@
     <ClInclude Include="tetris_graph_game_mgr.h">
       <Filter>header file</Filter>
     </ClInclude>
+    <ClInclude Include="nu_terminal_input.h">
+      <Filter>header file</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="tetris_concrete_piece.cc">

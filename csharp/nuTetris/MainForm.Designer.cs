@@ -77,7 +77,7 @@ namespace nuTetris
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(625, 450);
+            this.ClientSize = new System.Drawing.Size(488, 249);
             this.Controls.Add(this.txtScore);
             this.Controls.Add(this.lblNext);
             this.Controls.Add(this.lblScore);
