@@ -2,7 +2,6 @@
 {
     public class ConcretePiece : Piece
     {
-
         public class Data
         {
             public int posX = 0;
@@ -25,13 +24,15 @@
             }
         }
 
+        public int Color { get; } = 0;
+
         protected Data data;
         protected Data undoData;
         private ShapeData[] shape;
 
         protected ShapeData[] Shape { get => shape; set => shape = value; }
 
-        public ConcretePiece()
+        public ConcretePiece(int c)
         {
             data = new Data();
             undoData = new Data();
@@ -39,9 +40,11 @@
 
             for (int i = 0; i < Shape.Length; ++i)
                 Shape[i] = new ShapeData();
+
+            Color = c;
         }
 
-        public override Piece Clone() => new ConcretePiece();
+        public override Piece Clone() => new ConcretePiece(Color);
 
         public override void MoveRight()
         {
@@ -156,7 +159,7 @@
 
         public override ShapeData GetShape() => Shape[data.orientation];
 
-        public override void MoveCenter(int rowLength) => 
+        public override void MoveCenter(int rowLength) =>
             data.posX = (rowLength + (Piece.COLS - data.leftMargin
                     - data.rightMargin)) / 2;
     }

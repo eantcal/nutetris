@@ -8,10 +8,8 @@ namespace nuTetris
 {
     public class ConcretePieceZ : ConcretePiece
     {
-        public ConcretePieceZ(int c)
+        public ConcretePieceZ(int c) : base(c)
         {
-            Color = c;
-
             RowData[] data = Shape[0].GetData();
 
             {
@@ -72,7 +70,6 @@ namespace nuTetris
 
         }
 
-        public int Color { get; } = 0;
         public override Piece Clone() => new ConcretePieceZ(Color);
     }
 }

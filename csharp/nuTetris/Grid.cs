@@ -50,11 +50,7 @@ namespace nuTetris
         public int RowsCount { get; } = 0;
 
         /** Get value of to a cell at coordinates x,y */
-        public int GetAt(int x, int y)
-        {
-            RowData[] row = (RowData[])gridMap.GetData();
-            return row[y].Get[x];
-        }
+        public int GetAt(int x, int y) => gridMap.GetData()[y].Get[x];
 
         /** Clear the grid content */
         public void Clear() => gridMap = new GridData(ColsCount, RowsCount);
@@ -197,10 +193,8 @@ namespace nuTetris
                         // depending on top margin value
                         // (cells data modification will be not committed)
                         if (gridCell != 0 && pieceCell != 0)
-                        {
                             return (pieceY - piece.GetTopMargin()) < 1 ?
                                 PlaceSt.NO_ROOM_FOR_PIECE : PlaceSt.TOUCH_DOWN;
-                        }
 
                         // Copy piece (or delete) cell content into the draft data map
                         if (pieceCell != 0)
