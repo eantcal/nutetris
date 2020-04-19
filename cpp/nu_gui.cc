@@ -67,168 +67,168 @@ namespace nu
 
 class gdi_ctx_t
 {
-   public:
-      enum brush_t {
-         NO_BRUSH, SOLID_BRUSH
-      };
+public:
+   enum brush_t {
+      NO_BRUSH, SOLID_BRUSH
+   };
 
-      gdi_ctx_t() = delete;
-      gdi_ctx_t(gdi_ctx_t&) = delete;
-
-
-   private:
-      HWND _console_hwnd = nullptr;
-      HDC _hdc = nullptr;
-      HPEN _hpen = nullptr;
-      HBRUSH _hbr = nullptr;
-
-      gdi_iarg_t _pen_color;
-      brush_t _brush_type;
-      gdi_iarg_t _brush_color;
-      gdi_iarg_t _pen_width;
+   gdi_ctx_t() = delete;
+   gdi_ctx_t(gdi_ctx_t&) = delete;
 
 
-   public:
-      gdi_ctx_t(
-            HWND winhandle,
-            gdi_iarg_t pen_color = RGB(0xff, 0xff, 0xff),
-            brush_t brush_type = NO_BRUSH,
-            gdi_iarg_t brush_color = RGB(0xff, 0xff, 0xff),
-            gdi_iarg_t pen_width = 1)
-         :
-            _console_hwnd(winhandle),
-            _hdc(GetDC(winhandle)),
-            _hpen(CreatePen(PS_SOLID, pen_width, pen_color)),
-            _hbr(HBRUSH(GetStockObject(HOLLOW_BRUSH))),
-            _pen_color(pen_color),
-            _brush_type(brush_type),
-            _brush_color(brush_color),
-            _pen_width(pen_width)
+private:
+   HWND _console_hwnd = nullptr;
+   HDC _hdc = nullptr;
+   HPEN _hpen = nullptr;
+   HBRUSH _hbr = nullptr;
+
+   gdi_iarg_t _pen_color;
+   brush_t _brush_type;
+   gdi_iarg_t _brush_color;
+   gdi_iarg_t _pen_width;
+
+
+public:
+   gdi_ctx_t(
+      HWND winhandle,
+      gdi_iarg_t pen_color = RGB(0xff, 0xff, 0xff),
+      brush_t brush_type = NO_BRUSH,
+      gdi_iarg_t brush_color = RGB(0xff, 0xff, 0xff),
+      gdi_iarg_t pen_width = 1)
+      :
+      _console_hwnd(winhandle),
+      _hdc(GetDC(winhandle)),
+      _hpen(CreatePen(PS_SOLID, pen_width, pen_color)),
+      _hbr(HBRUSH(GetStockObject(HOLLOW_BRUSH))),
+      _pen_color(pen_color),
+      _brush_type(brush_type),
+      _brush_color(brush_color),
+      _pen_width(pen_width)
+   {
+      SelectObject(_hdc, _hpen);
+
+      if (brush_type == SOLID_BRUSH)
+         _hbr = CreateSolidBrush(brush_color);
+
+      if (_hdc && _hbr)
+         SelectObject(_hdc, _hbr);
+   }
+
+
+   HWND get_hwnd() const noexcept
+   {
+      return _console_hwnd;
+   }
+
+
+   void set_pen(gdi_iarg_t pen_color, gdi_iarg_t pen_width)
+   {
+      if (
+         _hpen == nullptr ||
+         pen_color != _pen_color ||
+         pen_width != _pen_width)
       {
-         SelectObject(_hdc, _hpen);
-
-         if (brush_type == SOLID_BRUSH)
-            _hbr = CreateSolidBrush(brush_color);
-
-         if (_hdc && _hbr)
-            SelectObject(_hdc, _hbr);
-      }
-
-
-      HWND get_hwnd() const noexcept
-      {
-         return _console_hwnd;
-      }
-
-
-      void set_pen(gdi_iarg_t pen_color, gdi_iarg_t pen_width)
-      {
-         if (
-               _hpen==nullptr || 
-               pen_color != _pen_color || 
-               pen_width != _pen_width)
-         {
-            _pen_color = pen_color;
-            _pen_width = pen_width;
-
-            if (_hpen)
-               DeleteObject(_hpen);
-
-            _hpen = CreatePen(PS_SOLID, pen_width, pen_color);
-
-            if (_hdc && _hpen)
-               SelectObject(_hdc, _hpen);
-         }
-      }
-
-
-      void set_brush(brush_t brush_type, gdi_iarg_t brush_color)
-      {
-         if (
-               _hbr == nullptr ||
-               brush_type != _brush_type ||
-               brush_color != _brush_color)
-         {
-            if (_hbr)
-               DeleteObject(_hbr);
-
-            _hbr = brush_type == SOLID_BRUSH ?
-               CreateSolidBrush(brush_color) : 
-               HBRUSH(GetStockObject(HOLLOW_BRUSH));
-
-            if (_hdc && _hbr)
-               SelectObject(_hdc, _hbr);
-         }
-      }
-
-
-      HDC get_hdc() const noexcept
-      {
-         return _hdc;
-      }
-
-
-      HDC reset_hdc() noexcept
-      {
-         if (_hbr)
-            DeleteObject(_hbr);
+         _pen_color = pen_color;
+         _pen_width = pen_width;
 
          if (_hpen)
             DeleteObject(_hpen);
 
-         if (_hdc)
-            ReleaseDC(_console_hwnd, _hdc);
+         _hpen = CreatePen(PS_SOLID, pen_width, pen_color);
 
-         _hdc = GetDC(get_hwnd());
-
-         SelectObject(_hdc, _hpen);
-
-         if (_brush_type == SOLID_BRUSH)
-            _hbr = CreateSolidBrush(_brush_color);
-         else
-            _hbr = HBRUSH(GetStockObject(HOLLOW_BRUSH));
-
-         if (_hdc && _hbr)
-            SelectObject(_hdc, _hbr);
-
-         return _hdc;
+         if (_hdc && _hpen)
+            SelectObject(_hdc, _hpen);
       }
+   }
 
 
-      virtual ~gdi_ctx_t()
+   void set_brush(brush_t brush_type, gdi_iarg_t brush_color)
+   {
+      if (
+         _hbr == nullptr ||
+         brush_type != _brush_type ||
+         brush_color != _brush_color)
       {
          if (_hbr)
             DeleteObject(_hbr);
 
-         if (_hpen)
-            DeleteObject(_hpen);
+         _hbr = brush_type == SOLID_BRUSH ?
+            CreateSolidBrush(brush_color) :
+            HBRUSH(GetStockObject(HOLLOW_BRUSH));
 
-         if (_hdc)
-            ReleaseDC(_console_hwnd, _hdc);
+         if (_hdc && _hbr)
+            SelectObject(_hdc, _hbr);
       }
+   }
+
+
+   HDC get_hdc() const noexcept
+   {
+      return _hdc;
+   }
+
+
+   HDC reset_hdc() noexcept
+   {
+      if (_hbr)
+         DeleteObject(_hbr);
+
+      if (_hpen)
+         DeleteObject(_hpen);
+
+      if (_hdc)
+         ReleaseDC(_console_hwnd, _hdc);
+
+      _hdc = GetDC(get_hwnd());
+
+      SelectObject(_hdc, _hpen);
+
+      if (_brush_type == SOLID_BRUSH)
+         _hbr = CreateSolidBrush(_brush_color);
+      else
+         _hbr = HBRUSH(GetStockObject(HOLLOW_BRUSH));
+
+      if (_hdc && _hbr)
+         SelectObject(_hdc, _hbr);
+
+      return _hdc;
+   }
+
+
+   virtual ~gdi_ctx_t()
+   {
+      if (_hbr)
+         DeleteObject(_hbr);
+
+      if (_hpen)
+         DeleteObject(_hpen);
+
+      if (_hdc)
+         ReleaseDC(_console_hwnd, _hdc);
+   }
 
 };
 
 
 /* -------------------------------------------------------------------------- */
 
-gui_t * gui_t::_instance = nullptr;
+gui_t* gui_t::_instance = nullptr;
 
 
 /* -------------------------------------------------------------------------- */
 
-gui_t::gui_t( gdi_ctx_t & ctx ) noexcept : _ctx(ctx) 
+gui_t::gui_t(gdi_ctx_t& ctx) noexcept : _ctx(ctx)
 {
 }
 
 
 /* -------------------------------------------------------------------------- */
 
-gui_t & gui_t::get_instance() noexcept
+gui_t& gui_t::get_instance() noexcept
 {
    if (!_instance)
    {
-      gdi_ctx_t * gdi_ctx = 
+      gdi_ctx_t* gdi_ctx =
          new gdi_ctx_t(GetConsoleWindow());
 
       _instance = new gui_t(*gdi_ctx);
@@ -257,17 +257,17 @@ int gui_t::textout(int x, int y, const std::string& text, int c) noexcept
 
 /* -------------------------------------------------------------------------- */
 
-void _create_pen_brush( gdi_ctx_t & ctx, int col, int pen_width, bool full )
+void _create_pen_brush(gdi_ctx_t& ctx, int col, int pen_width, bool full)
 {
 
-   ctx.set_pen(col, pen_width); 
+   ctx.set_pen(col, pen_width);
 
    ctx.set_brush(
-         full ? 
-         gdi_ctx_t::brush_t::SOLID_BRUSH :
-         gdi_ctx_t::brush_t::NO_BRUSH, 
-         col
-         );
+      full ?
+      gdi_ctx_t::brush_t::SOLID_BRUSH :
+      gdi_ctx_t::brush_t::NO_BRUSH,
+      col
+   );
 }
 
 
@@ -294,7 +294,7 @@ int gui_t::rect(int x, int y, int dx, int dy, int pw, int col, bool full) noexce
 {
    _create_pen_brush(_ctx, col, pw, full);
 
-   auto ret = Rectangle(_ctx.get_hdc(), x, y, abs(dx)+x, abs(dy)+y ) ?
+   auto ret = Rectangle(_ctx.get_hdc(), x, y, abs(dx) + x, abs(dy) + y) ?
       0 : errno;
 
    GdiFlush();
@@ -309,7 +309,7 @@ int gui_t::ellipse(int x, int y, int dx, int dy, int pw, int col, bool full) noe
 {
    _create_pen_brush(_ctx, col, pw, full);
 
-   auto ret =  Ellipse(_ctx.get_hdc(), x, y, abs(dx)+x, abs(dy)+y ) ?
+   auto ret = Ellipse(_ctx.get_hdc(), x, y, abs(dx) + x, abs(dy) + y) ?
       0 : errno;
 
    GdiFlush();
@@ -329,212 +329,14 @@ int gui_t::circle(int x, int y, int r, int pw, int col, bool full) noexcept
 
    _create_pen_brush(_ctx, col, pw, full);
 
-   auto ret = Ellipse(_ctx.get_hdc(), x1, y1, x2, y2 ) ? 0 : errno;
+   auto ret = Ellipse(_ctx.get_hdc(), x1, y1, x2, y2) ? 0 : errno;
 
    GdiFlush();
 
    return ret;
 }
 
-
-/* -------------------------------------------------------------------------- */
-
-int gui_t::plotimage(int x, int y, const std::string& filename) noexcept
-{
-   gdi_ctx_t & gdi_ctx = _ctx;
-
-   HDC hdc = gdi_ctx.get_hdc();
-
-#ifndef __MINGW32__
-   Graphics graphics(hdc);
-   WCHAR dst[1024] = { 0 };
-   mbstowcs( dst, filename.c_str(), sizeof(dst)/sizeof(WCHAR) );
-   Image image(dst);
-   const auto status = graphics.DrawImage(&image, x, y);
-   return status != Status::Ok ? 0 : GetLastError();
-#else
-   HANDLE image = ::LoadImage(
-         NULL,
-         filename.c_str(),
-         IMAGE_BITMAP,
-         0, 0,
-         LR_LOADFROMFILE);
-
-   if (!image)
-      return GetLastError();
-
-   HDC hdcMem = ::CreateCompatibleDC(hdc);
-   auto hbmOld = ::SelectObject(hdcMem, (HGDIOBJ) image);
-
-   BITMAP bm = { 0 };
-   ::GetObject(image, sizeof(bm), &bm);
-
-   auto ret = ::BitBlt(hdc, x, y, bm.bmWidth, bm.bmHeight, hdcMem, 0, 0, SRCCOPY);
-
-   ::SelectObject(hdcMem, hbmOld);
-   ::DeleteDC(hdcMem);
-
-   return ret != 0 ? 0 : GetLastError();
-#endif
 }
-
-
-/* -------------------------------------------------------------------------- */
-
-int gui_t::get_client_width() noexcept
-{
-   RECT r = { 0 };
-   GetClientRect(_ctx.get_hwnd(), &r);
-   return r.right - r.left;
-}
-
-
-/* -------------------------------------------------------------------------- */
-
-int gui_t::get_client_height() noexcept
-{
-   RECT r = { 0 };
-   GetClientRect(_ctx.get_hwnd(), &r);
-   return r.bottom - r.top;
-}
-
-
-/* -------------------------------------------------------------------------- */
-
-int gui_t::mouse_x() noexcept
-{
-   POINT pt = { 0 };
-   GetCursorPos(&pt);
-   ScreenToClient(_ctx.get_hwnd(), &pt);
-
-   return pt.x;
-}
-
-
-/* -------------------------------------------------------------------------- */
-
-int gui_t::mouse_y() noexcept
-{
-   POINT pt = { 0 };
-   GetCursorPos(&pt);
-   ScreenToClient(_ctx.get_hwnd(), &pt);
-
-   return pt.y;
-}
-
-
-/* -------------------------------------------------------------------------- */
-
-int gui_t::mouse_btn() noexcept
-{
-   int ret = 0;
-
-   if (GetAsyncKeyState(VK_LBUTTON))
-   {
-      ret |= 1;
-   }
-
-   if (GetAsyncKeyState(VK_RBUTTON))
-   {
-      ret |= 4;
-   }
-
-   if (GetAsyncKeyState(VK_MBUTTON))
-   {
-      ret |= 2;
-   }
-
-   return ret;
-}
-
-
-/* -------------------------------------------------------------------------- */
-
-int gui_t::msg_box(const std::string& title, const std::string& message, int flg) noexcept
-{
-   (void)flg; // not yet used
-
-   return ::MessageBox(
-         _ctx.get_hwnd(), 
-         message.c_str(), 
-         title.c_str(), 
-         MB_ICONINFORMATION | MB_OK);
-}
-
-
-/* -------------------------------------------------------------------------- */
-
-int gui_t::play_sound(const std::string& filename, int flag) noexcept
-{
-   gdi_iarg_t wflg = 0;
-
-   switch (flag)
-   {
-      case 1:
-         wflg = SND_ASYNC;
-         break;
-
-      case 0:
-      default:
-         wflg = SND_SYNC;
-         break;
-   }
-
-   return PlaySound(filename.c_str(), NULL, wflg | SND_FILENAME);
-}
-
-
-/* -------------------------------------------------------------------------- */
-
-int gui_t::move_window(int x, int y, int dx, int dy) noexcept
-{
-   return MoveWindow(_ctx.get_hwnd(), x, y, dx, dy, TRUE);
-}
-
-
-/* -------------------------------------------------------------------------- */
-
-int gui_t::get_window_x() noexcept
-{
-   RECT r = { 0 };
-   GetWindowRect(_ctx.get_hwnd(), &r);
-   return r.left;
-}
-
-
-/* -------------------------------------------------------------------------- */
-
-int gui_t::get_window_y() noexcept
-{
-   RECT r = { 0 };
-   GetWindowRect(_ctx.get_hwnd(), &r);
-   return r.top;
-}
-
-/* -------------------------------------------------------------------------- */
-
-int gui_t::get_window_dx() noexcept
-{
-   RECT r = { 0 };
-   GetWindowRect(_ctx.get_hwnd(), &r);
-   return std::abs(r.right - r.left);
-}
-
-
-/* -------------------------------------------------------------------------- */
-
-int gui_t::get_window_dy() noexcept
-{
-   RECT r = { 0 };
-   GetWindowRect(_ctx.get_hwnd(), &r);
-   return std::abs(r.top - r.bottom);
-}
-
-
-/* -------------------------------------------------------------------------- */
-
-}
-
 
 /* -------------------------------------------------------------------------- */
 
