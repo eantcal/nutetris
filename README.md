@@ -1,5 +1,5 @@
 # nutetris
-Tetris game clone written in c++11 and ported in Java, C# and BASIC (for nuBASIC interpreter).
+Tetris game clone written in modern c++ and ported in Java, C# and BASIC (for nuBASIC interpreter).
 
 ![nuTetris - C# version](images/Tetris.png)
 
