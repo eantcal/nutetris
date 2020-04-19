@@ -22,20 +22,27 @@
 
 #include <thread>
 
+
 /* -------------------------------------------------------------------------- */
 
 int main()
 {
+#ifdef TEXT_MODE
+#define MGR tetris::game_mgr_t
+#else
+#define MGR tetris::graph_game_mgr_t
+#endif
+
    auto & game = 
-      tetris::make_game_mgr_instance<tetris::graph_game_mgr_t>();
+      tetris::make_game_mgr_instance< MGR >();
 
    const auto a_while = 
       std::chrono::milliseconds(NU_TETRIS_GAME_SLEEP_INTV);
 
    while (1)
    {
-      //Sleep for a while in order to allow other 
-      //processes/threads to run
+      // Sleep for a while in order to allow other 
+      // processes/threads to run
       std::this_thread::sleep_for(a_while);
       game.run();
    }
