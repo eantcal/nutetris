@@ -3,6 +3,7 @@ Tetris game clone written in c++11 and ported in Java, C# and BASIC (for nuBASIC
 
 ![nuTetris - Java version](images/jetris.png)
 ![nuTetris - C# version](images/Tetris.png)
+![nuTetris - C++ version](images/nuTetris.png)
 
 ## Why nuTetris?
 nuTetris is a good sample of not trivial application which can be used as example in a programming training course.
