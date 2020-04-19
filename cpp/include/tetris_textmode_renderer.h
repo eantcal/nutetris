@@ -42,13 +42,13 @@ class textmode_renderer_t : public renderer_t
 {
 public:
    //! Render the game scene
-   void render(const game_data_t& game_data) throw() override;
+   void render(const game_data_t& game_data) noexcept override;
 
 private:
-   void _draw_game_area(const game_data_t& game_data) throw();
-   void _draw_piece_preview(const game_data_t& game_data) throw();
-   void _draw_score(const game_data_t& game_data) throw();
-   void _draw_grid(const grid_t& grid) throw();
+   void _draw_game_area(const game_data_t& game_data) noexcept;
+   void _draw_piece_preview(const game_data_t& game_data) noexcept;
+   void _draw_score(const game_data_t& game_data) noexcept;
+   void _draw_grid(const grid_t& grid) noexcept;
 };
 
 

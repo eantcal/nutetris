@@ -50,37 +50,37 @@ class gui_t
 private:
    gdi_ctx_t & _ctx;
 
-   gui_t(gdi_ctx_t & ctx) throw();
+   gui_t(gdi_ctx_t & ctx) noexcept;
 
    static gui_t * _instance;
 
 public:
    static const int WHITE = _nu_rgb(0xff, 0xff, 0xff);
 
-   static gui_t & get_instance() throw();
+   static gui_t & get_instance() noexcept;
 
-   int textout(int x, int y, const std::string& text, int c) throw();
-   int plotimage(int x, int y, const std::string& filename) throw();
-   int line(int x1, int y1, int x2, int y2, int pw=1, int col=WHITE) throw();
-   int rect(int x, int y, int dx, int dy, int pw=1, int col=WHITE, bool full=false) throw();
-   int ellipse(int x, int y, int dx, int dy, int pw=1, int col=WHITE, bool full=false) throw();
-   int circle(int x, int y, int r, int pw=1, int col=WHITE, bool full=false) throw();
+   int textout(int x, int y, const std::string& text, int c) noexcept;
+   int plotimage(int x, int y, const std::string& filename) noexcept;
+   int line(int x1, int y1, int x2, int y2, int pw=1, int col=WHITE) noexcept;
+   int rect(int x, int y, int dx, int dy, int pw=1, int col=WHITE, bool full=false) noexcept;
+   int ellipse(int x, int y, int dx, int dy, int pw=1, int col=WHITE, bool full=false) noexcept;
+   int circle(int x, int y, int r, int pw=1, int col=WHITE, bool full=false) noexcept;
 
-   int get_client_width() throw();
-   int get_client_height() throw();
+   int get_client_width() noexcept;
+   int get_client_height() noexcept;
 
-   int mouse_x() throw();
-   int mouse_y() throw();
-   int mouse_btn() throw();
+   int mouse_x() noexcept;
+   int mouse_y() noexcept;
+   int mouse_btn() noexcept;
 
-   int msg_box(const std::string& title, const std::string& message, int flg=0) throw();
-   int play_sound(const std::string& filename, int flg=1) throw();
-   int move_window(int x, int y, int dx, int dy) throw();
+   int msg_box(const std::string& title, const std::string& message, int flg=0) noexcept;
+   int play_sound(const std::string& filename, int flg=1) noexcept;
+   int move_window(int x, int y, int dx, int dy) noexcept;
 
-   int get_window_x() throw();
-   int get_window_y() throw();
-   int get_window_dx() throw();
-   int get_window_dy() throw();
+   int get_window_x() noexcept;
+   int get_window_y() noexcept;
+   int get_window_dx() noexcept;
+   int get_window_dy() noexcept;
 };
 
 

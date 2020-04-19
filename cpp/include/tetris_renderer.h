@@ -50,10 +50,10 @@ public:
       using col_t = piece_t::col_t;
 
       //! Gets a reference to the grid object
-      virtual const grid_t & get_game_grid() const throw() = 0;
+      virtual const grid_t & get_game_grid() const noexcept = 0;
 
       //! Gets a reference to the preview canvas object
-      virtual const grid_t & get_preview_canvas() const throw() = 0;
+      virtual const grid_t & get_preview_canvas() const noexcept = 0;
 
       //! Gets the score 
       virtual size_t get_game_score() const = 0;
@@ -62,14 +62,14 @@ public:
       virtual game_state_t get_game_st() const = 0;
    
       //! dtor
-      virtual ~game_data_t() throw() {};
+      virtual ~game_data_t() noexcept {};
    };
 
    //! Renders the scene
-   virtual void render(const game_data_t& game_data) throw() = 0;
+   virtual void render(const game_data_t& game_data) noexcept = 0;
 
    //! dtor
-   virtual ~renderer_t() throw() {};
+   virtual ~renderer_t() noexcept {};
 };
 
 

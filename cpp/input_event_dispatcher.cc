@@ -24,14 +24,14 @@
 
 /* -------------------------------------------------------------------------- */
 
-input_event_dispatcher_t::~input_event_dispatcher_t() throw()
+input_event_dispatcher_t::~input_event_dispatcher_t() noexcept
 {
 }
 
 
 /* -------------------------------------------------------------------------- */
 
-void input_event_dispatcher_t::notify_all(const input_device_t::event_t & ev) throw()
+void input_event_dispatcher_t::notify_all(const input_device_t::event_t & ev) noexcept
 {
    for (auto listener : _listeners)
       listener->notify(ev);
@@ -40,7 +40,7 @@ void input_event_dispatcher_t::notify_all(const input_device_t::event_t & ev) th
 
 /* -------------------------------------------------------------------------- */
 
-void input_event_dispatcher_t::subscribe(input_event_listener_t* listener) throw()
+void input_event_dispatcher_t::subscribe(input_event_listener_t* listener) noexcept
 {
    assert(listener);
    _listeners.insert(listener);
@@ -49,7 +49,7 @@ void input_event_dispatcher_t::subscribe(input_event_listener_t* listener) throw
 
 /* -------------------------------------------------------------------------- */
 
-void input_event_dispatcher_t::unsubscribe(input_event_listener_t* listener) throw()
+void input_event_dispatcher_t::unsubscribe(input_event_listener_t* listener) noexcept
 {
    assert(listener);
    _listeners.erase(listener);

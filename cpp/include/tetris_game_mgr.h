@@ -107,37 +107,37 @@ protected:
 
    //! Overriding this method you may register a different 
    //! event map (it implements template method pattern)
-   virtual void register_events() throw();
+   virtual void register_events() noexcept;
    
 
    //! Overriding this method you may register a different 
    //! render (it implements template method pattern)
-   virtual void register_render() throw();
+   virtual void register_render() noexcept;
 
 
    //! Called by input manager this function convert an input device event
    //! into game input command (skipping unused inputs)
-   void notify(const input_device_t::event_t & ev) throw() override;
+   void notify(const input_device_t::event_t & ev) noexcept override;
 
 
    //! Returns the piece factory reference
-   virtual piece_factory_t& piece_factory() const throw();
+   virtual piece_factory_t& piece_factory() const noexcept;
 
 
    //! Redraws the scene
-   void render_scene() throw();
+   void render_scene() noexcept;
 
 
    //! Reverts to previous piece position / orientation
-   void undo_move_piece() throw();
+   void undo_move_piece() noexcept;
 
 
    //! Takes a new piece from catalog
-   void select_new_piece() throw();
+   void select_new_piece() noexcept;
 
 
    //! Acknowledges last input event
-   void ack_input_event() throw()
+   void ack_input_event() noexcept
    {
       _input = input_t::NONE;
    }
@@ -151,14 +151,14 @@ protected:
 
 
    //! Process any new input event
-   void process_input() throw()
+   void process_input() noexcept
    {
       _input_mgr.run();
    }
 
 
    //! Returns and acknowledges last input event
-   input_t get_input() throw()
+   input_t get_input() noexcept
    {
       auto input = _input;
       _input = input_t::NONE;
@@ -169,7 +169,7 @@ protected:
    //! Set / reset _piece_dropped state
    //! which causes a series of move down event
    //! in order to speed up piece falling
-   void drop_piece( bool st = true ) throw()
+   void drop_piece( bool st = true ) noexcept
    {
       _piece_dropped = st;
       if (! st) ack_input_event();
@@ -177,21 +177,21 @@ protected:
 
 
    //! Gets a list of completed rows
-   void get_full_rows(full_rows_t & full_rows) const throw()
+   void get_full_rows(full_rows_t & full_rows) const noexcept
    {
       _game_grid.get_full_rows(full_rows);
    }
 
 
    //! Fills the cells of a whole row using a given color attribute
-   void fill_row(const coord_t & row_idx, const col_t& attr) throw()
+   void fill_row(const coord_t & row_idx, const col_t& attr) noexcept
    {
       _game_grid.fill_row(row_idx, attr);
    }
    
 
    //! Remove the completed rows, moving down the other cells
-   void remove_full_rows() throw()
+   void remove_full_rows() noexcept
    {
       _game_grid.remove_full_rows();
    }
@@ -199,7 +199,7 @@ protected:
 
    //! Processes an input and handles it
    //! if it is related to piece movement
-   input_t handle_piece_movements() throw();
+   input_t handle_piece_movements() noexcept;
 
 
    //! Called on PLAYING state
@@ -207,7 +207,7 @@ protected:
 
 
    //! Called on BEING state
-   virtual void setup() throw();
+   virtual void setup() noexcept;
 
 
    //! Called on GAMEOVER state
@@ -215,7 +215,7 @@ protected:
 
 
    //! Updates falling timer interval 
-   void set_idle_intv(const interval_t& intv) throw()
+   void set_idle_intv(const interval_t& intv) noexcept
    {
       _input_mgr.change_timer_interval(intv);
    }
@@ -280,8 +280,8 @@ private:
    {
       const game_mgr_t* _this = nullptr;
       game_renderer_data_t(const game_mgr_t* ptr) : _this(ptr) {}
-      const grid_t & get_game_grid() const throw() override;
-      const grid_t & get_preview_canvas() const throw() override;
+      const grid_t & get_game_grid() const noexcept override;
+      const grid_t & get_preview_canvas() const noexcept override;
       size_t get_game_score() const override;
       game_state_t get_game_st() const override;
    }

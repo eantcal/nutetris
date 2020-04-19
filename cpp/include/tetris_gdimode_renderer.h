@@ -59,14 +59,14 @@ public:
    };
 
 
-   gdimode_renderer_t() throw();
+   gdimode_renderer_t() noexcept;
 
    //! Render the game scene
-   void render(const game_data_t& game_data) throw() override;
+   void render(const game_data_t& game_data) noexcept override;
 
 private:
-   void _draw_score(const game_data_t& game_data) throw();
-   void _draw_grid(const grid_t& grid, int screenx, int screeny, int cellsize) throw();
+   void _draw_score(const game_data_t& game_data) noexcept;
+   void _draw_grid(const grid_t& grid, int screenx, int screeny, int cellsize) noexcept;
    
    using rgb_color_t = int;
 

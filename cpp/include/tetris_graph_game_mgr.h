@@ -30,7 +30,7 @@ namespace tetris
 class graph_game_mgr_t : public game_mgr_t
 {
 public:
-   virtual void register_render() throw()
+   virtual void register_render() noexcept
    {
       _renderer = std::unique_ptr< gdimode_renderer_t >(new gdimode_renderer_t);
    }

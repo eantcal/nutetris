@@ -49,16 +49,16 @@ public:
       interval_t intv = interval_t(DEFAULT_INTERVAL));
    
    //! Modify current timer interval
-   void change_interval(const interval_t& new_interval) throw();
+   void change_interval(const interval_t& new_interval) noexcept;
 
    //! Get current timer interval
-   interval_t get_interval() const throw();
+   interval_t get_interval() const noexcept;
 
    //! Poll an event
-   virtual event_t poll() throw() override;
+   virtual event_t poll() noexcept override;
 
    //! dtor
-   virtual ~timer_input_device_t() throw();
+   virtual ~timer_input_device_t() noexcept;
 
 private:
    interval_t _interval; // ms
@@ -67,10 +67,10 @@ private:
    mutable std::mutex _mtx;
    std::unique_ptr < std::thread > _thread;
 
-   bool _stop_request_pending() const throw();
-   void _stop_thread() throw();
-   bool _ack_event() throw();
-   void _notify_event() throw();
+   bool _stop_request_pending() const noexcept;
+   void _stop_thread() noexcept;
+   bool _ack_event() noexcept;
+   void _notify_event() noexcept;
    static void _thread_proc(timer_input_device_t* _this);
 };
 

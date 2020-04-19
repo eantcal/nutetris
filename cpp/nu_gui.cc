@@ -115,7 +115,7 @@ class gdi_ctx_t
       }
 
 
-      HWND get_hwnd() const throw()
+      HWND get_hwnd() const noexcept
       {
          return _console_hwnd;
       }
@@ -162,13 +162,13 @@ class gdi_ctx_t
       }
 
 
-      HDC get_hdc() const throw()
+      HDC get_hdc() const noexcept
       {
          return _hdc;
       }
 
 
-      HDC reset_hdc() throw()
+      HDC reset_hdc() noexcept
       {
          if (_hbr)
             DeleteObject(_hbr);
@@ -217,14 +217,14 @@ gui_t * gui_t::_instance = nullptr;
 
 /* -------------------------------------------------------------------------- */
 
-gui_t::gui_t( gdi_ctx_t & ctx ) throw() : _ctx(ctx) 
+gui_t::gui_t( gdi_ctx_t & ctx ) noexcept : _ctx(ctx) 
 {
 }
 
 
 /* -------------------------------------------------------------------------- */
 
-gui_t & gui_t::get_instance() throw()
+gui_t & gui_t::get_instance() noexcept
 {
    if (!_instance)
    {
@@ -240,7 +240,7 @@ gui_t & gui_t::get_instance() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::textout(int x, int y, const std::string& text, int c) throw()
+int gui_t::textout(int x, int y, const std::string& text, int c) noexcept
 {
    auto hdc = _ctx.get_hdc();
 
@@ -273,7 +273,7 @@ void _create_pen_brush( gdi_ctx_t & ctx, int col, int pen_width, bool full )
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::line(int x1, int y1, int x2, int y2, int pw, int col) throw()
+int gui_t::line(int x1, int y1, int x2, int y2, int pw, int col) noexcept
 {
    POINT ppt = { 0 };
 
@@ -290,7 +290,7 @@ int gui_t::line(int x1, int y1, int x2, int y2, int pw, int col) throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::rect(int x, int y, int dx, int dy, int pw, int col, bool full) throw()
+int gui_t::rect(int x, int y, int dx, int dy, int pw, int col, bool full) noexcept
 {
    _create_pen_brush(_ctx, col, pw, full);
 
@@ -305,7 +305,7 @@ int gui_t::rect(int x, int y, int dx, int dy, int pw, int col, bool full) throw(
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::ellipse(int x, int y, int dx, int dy, int pw, int col, bool full) throw()
+int gui_t::ellipse(int x, int y, int dx, int dy, int pw, int col, bool full) noexcept
 {
    _create_pen_brush(_ctx, col, pw, full);
 
@@ -320,7 +320,7 @@ int gui_t::ellipse(int x, int y, int dx, int dy, int pw, int col, bool full) thr
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::circle(int x, int y, int r, int pw, int col, bool full) throw()
+int gui_t::circle(int x, int y, int r, int pw, int col, bool full) noexcept
 {
    const int x1 = x - r;
    const int y1 = y - r;
@@ -339,7 +339,7 @@ int gui_t::circle(int x, int y, int r, int pw, int col, bool full) throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::plotimage(int x, int y, const std::string& filename) throw()
+int gui_t::plotimage(int x, int y, const std::string& filename) noexcept
 {
    gdi_ctx_t & gdi_ctx = _ctx;
 
@@ -381,7 +381,7 @@ int gui_t::plotimage(int x, int y, const std::string& filename) throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::get_client_width() throw()
+int gui_t::get_client_width() noexcept
 {
    RECT r = { 0 };
    GetClientRect(_ctx.get_hwnd(), &r);
@@ -391,7 +391,7 @@ int gui_t::get_client_width() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::get_client_height() throw()
+int gui_t::get_client_height() noexcept
 {
    RECT r = { 0 };
    GetClientRect(_ctx.get_hwnd(), &r);
@@ -401,7 +401,7 @@ int gui_t::get_client_height() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::mouse_x() throw()
+int gui_t::mouse_x() noexcept
 {
    POINT pt = { 0 };
    GetCursorPos(&pt);
@@ -413,7 +413,7 @@ int gui_t::mouse_x() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::mouse_y() throw()
+int gui_t::mouse_y() noexcept
 {
    POINT pt = { 0 };
    GetCursorPos(&pt);
@@ -425,7 +425,7 @@ int gui_t::mouse_y() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::mouse_btn() throw()
+int gui_t::mouse_btn() noexcept
 {
    int ret = 0;
 
@@ -450,7 +450,7 @@ int gui_t::mouse_btn() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::msg_box(const std::string& title, const std::string& message, int flg)
+int gui_t::msg_box(const std::string& title, const std::string& message, int flg) noexcept
 {
    (void)flg; // not yet used
 
@@ -464,7 +464,7 @@ int gui_t::msg_box(const std::string& title, const std::string& message, int flg
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::play_sound(const std::string& filename, int flag)
+int gui_t::play_sound(const std::string& filename, int flag) noexcept
 {
    gdi_iarg_t wflg = 0;
 
@@ -486,7 +486,7 @@ int gui_t::play_sound(const std::string& filename, int flag)
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::move_window(int x, int y, int dx, int dy)
+int gui_t::move_window(int x, int y, int dx, int dy) noexcept
 {
    return MoveWindow(_ctx.get_hwnd(), x, y, dx, dy, TRUE);
 }
@@ -494,7 +494,7 @@ int gui_t::move_window(int x, int y, int dx, int dy)
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::get_window_x() throw()
+int gui_t::get_window_x() noexcept
 {
    RECT r = { 0 };
    GetWindowRect(_ctx.get_hwnd(), &r);
@@ -504,7 +504,7 @@ int gui_t::get_window_x() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::get_window_y() throw()
+int gui_t::get_window_y() noexcept
 {
    RECT r = { 0 };
    GetWindowRect(_ctx.get_hwnd(), &r);
@@ -513,7 +513,7 @@ int gui_t::get_window_y() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::get_window_dx() throw()
+int gui_t::get_window_dx() noexcept
 {
    RECT r = { 0 };
    GetWindowRect(_ctx.get_hwnd(), &r);
@@ -523,7 +523,7 @@ int gui_t::get_window_dx() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::get_window_dy() throw()
+int gui_t::get_window_dy() noexcept
 {
    RECT r = { 0 };
    GetWindowRect(_ctx.get_hwnd(), &r);
@@ -732,7 +732,7 @@ public:
 
 /* -------------------------------------------------------------------------- */
 
-   int get_window_width() const throw()
+   int get_window_width() const noexcept
    {
       return _win_width;
    }
@@ -740,7 +740,7 @@ public:
 
 /* -------------------------------------------------------------------------- */
 
-   int get_window_height() const throw()
+   int get_window_height() const noexcept
    {
       return _win_height;
    }
@@ -748,7 +748,7 @@ public:
 
 /* -------------------------------------------------------------------------- */
 
-   int get_window_x() const throw()
+   int get_window_x() const noexcept
    {
       getXYcoords();
       return _win_x;
@@ -757,7 +757,7 @@ public:
 
 /* -------------------------------------------------------------------------- */
 
-   int get_window_y() const throw()
+   int get_window_y() const noexcept
    {
       getXYcoords();
       return _win_y;
@@ -766,7 +766,7 @@ public:
 
 /* -------------------------------------------------------------------------- */
 
-   int move_win(int x, int y) throw()
+   int move_win(int x, int y) noexcept
    {
       return XMoveWindow(_display, _xterm_win, x,y);
    }
@@ -774,7 +774,7 @@ public:
 
 /* -------------------------------------------------------------------------- */
 
-   int resize_win(int dx, int dy) throw()
+   int resize_win(int dx, int dy) noexcept
    {
       return XResizeWindow(_display, _xterm_win, dx, dy);
    }
@@ -1026,14 +1026,14 @@ gui_t * gui_t::_instance = nullptr;
 
 /* -------------------------------------------------------------------------- */
 
-gui_t::gui_t( gdi_ctx_t & ctx ) throw() : _ctx(ctx) 
+gui_t::gui_t( gdi_ctx_t & ctx ) noexcept : _ctx(ctx) 
 {
 }
 
 
 /* -------------------------------------------------------------------------- */
 
-gui_t & gui_t::get_instance() throw()
+gui_t & gui_t::get_instance() noexcept
 {
    static gdi_ctx_t gdi_ctx(0, gdi_ctx_t::NO_BRUSH, 0, 1);
 
@@ -1047,7 +1047,7 @@ gui_t & gui_t::get_instance() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::textout(int x, int y, const std::string& text, int c) throw()
+int gui_t::textout(int x, int y, const std::string& text, int c) noexcept
 {
    gdi_ctx_t gdi_ctx(c, gdi_ctx_t::NO_BRUSH, 0, 1);
    gdi_ctx.textout(x, y, text);
@@ -1057,7 +1057,7 @@ int gui_t::textout(int x, int y, const std::string& text, int c) throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::line(int x1, int y1, int x2, int y2, int pw, int col) throw()
+int gui_t::line(int x1, int y1, int x2, int y2, int pw, int col) noexcept
 {
    gdi_ctx_t gdi_ctx(col, gdi_ctx_t::NO_BRUSH, 0, pw);
    gdi_ctx.line(x1, y1, x2, y2);
@@ -1067,7 +1067,7 @@ int gui_t::line(int x1, int y1, int x2, int y2, int pw, int col) throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::rect(int x, int y, int dx, int dy, int pw, int col, bool full) throw()
+int gui_t::rect(int x, int y, int dx, int dy, int pw, int col, bool full) noexcept
 {
    gdi_ctx_t gdi_ctx(col, full ? gdi_ctx_t::SOLID_BRUSH : gdi_ctx_t::NO_BRUSH, col, pw);
 
@@ -1082,7 +1082,7 @@ int gui_t::rect(int x, int y, int dx, int dy, int pw, int col, bool full) throw(
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::ellipse(int x, int y, int dx, int dy, int pw, int col, bool full) throw()
+int gui_t::ellipse(int x, int y, int dx, int dy, int pw, int col, bool full) noexcept
 {
    gdi_ctx_t gdi_ctx(col, full ? gdi_ctx_t::SOLID_BRUSH : gdi_ctx_t::NO_BRUSH, col, pw);
 
@@ -1097,7 +1097,7 @@ int gui_t::ellipse(int x, int y, int dx, int dy, int pw, int col, bool full) thr
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::circle(int x, int y, int r, int pw, int col, bool full) throw()
+int gui_t::circle(int x, int y, int r, int pw, int col, bool full) noexcept
 {
    const int x1 = x - r;
    const int y1 = y - r;
@@ -1117,7 +1117,7 @@ int gui_t::circle(int x, int y, int r, int pw, int col, bool full) throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::plotimage(int x, int y, const std::string& filename) throw()
+int gui_t::plotimage(int x, int y, const std::string& filename) noexcept
 {
    gdi_ctx_t gdi_ctx(0, gdi_ctx_t::NO_BRUSH, 0 /*TODO*/, 1);
    return gdi_ctx.plotimage(filename, x, y);
@@ -1126,7 +1126,7 @@ int gui_t::plotimage(int x, int y, const std::string& filename) throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::get_client_width() throw()
+int gui_t::get_client_width() noexcept
 {
    gdi_ctx_t gdi_ctx(0, gdi_ctx_t::NO_BRUSH, 0, 1);
    return gdi_ctx.get_window_width();
@@ -1135,7 +1135,7 @@ int gui_t::get_client_width() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::get_client_height() throw()
+int gui_t::get_client_height() noexcept
 {
    gdi_ctx_t gdi_ctx(0, gdi_ctx_t::NO_BRUSH, 0, 1);
    return gdi_ctx.get_window_height();
@@ -1144,7 +1144,7 @@ int gui_t::get_client_height() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::mouse_x() throw()
+int gui_t::mouse_x() noexcept
 {
    mouse_ctx_t ctx;
    int btn = 0;
@@ -1158,7 +1158,7 @@ int gui_t::mouse_x() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::mouse_y() throw()
+int gui_t::mouse_y() noexcept
 {
    mouse_ctx_t ctx;
    int btn = 0;
@@ -1172,7 +1172,7 @@ int gui_t::mouse_y() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::mouse_btn() throw()
+int gui_t::mouse_btn() noexcept
 {
    mouse_ctx_t ctx;
    int btn = 0;
@@ -1186,7 +1186,7 @@ int gui_t::mouse_btn() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::msg_box(const std::string& title, const std::string& message, int flg) throw()
+int gui_t::msg_box(const std::string& title, const std::string& message, int flg) noexcept
 {
    // Display message using xmessage
    std::string msg =
@@ -1198,7 +1198,7 @@ int gui_t::msg_box(const std::string& title, const std::string& message, int flg
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::play_sound(const std::string& filename, int flg) throw()
+int gui_t::play_sound(const std::string& filename, int flg) noexcept
 {
    bool sync = true;
 
@@ -1238,7 +1238,7 @@ int gui_t::play_sound(const std::string& filename, int flg) throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::move_window(int x, int y, int dx, int dy) throw()
+int gui_t::move_window(int x, int y, int dx, int dy) noexcept
 {
    gdi_ctx_t gdi_ctx(0, gdi_ctx_t::NO_BRUSH, 0, 1);
    int ret = gdi_ctx.move_win(x,y);
@@ -1248,7 +1248,7 @@ int gui_t::move_window(int x, int y, int dx, int dy) throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::get_window_x() throw()
+int gui_t::get_window_x() noexcept
 {
    gdi_ctx_t gdi_ctx(0, gdi_ctx_t::NO_BRUSH, 0, 1);
    return gdi_ctx.get_window_x();
@@ -1257,7 +1257,7 @@ int gui_t::get_window_x() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::get_window_y() throw()
+int gui_t::get_window_y() noexcept
 {
    gdi_ctx_t gdi_ctx(0, gdi_ctx_t::NO_BRUSH, 0, 1);
    return gdi_ctx.get_window_y();
@@ -1266,7 +1266,7 @@ int gui_t::get_window_y() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::get_window_dx() throw()
+int gui_t::get_window_dx() noexcept
 {
    gdi_ctx_t gdi_ctx(0, gdi_ctx_t::NO_BRUSH, 0, 1);
    return gdi_ctx.get_window_width();
@@ -1275,7 +1275,7 @@ int gui_t::get_window_dx() throw()
 
 /* -------------------------------------------------------------------------- */
 
-int gui_t::get_window_dy() throw()
+int gui_t::get_window_dy() noexcept
 {
    gdi_ctx_t gdi_ctx(0, gdi_ctx_t::NO_BRUSH, 0, 1);
    return gdi_ctx.get_window_height();

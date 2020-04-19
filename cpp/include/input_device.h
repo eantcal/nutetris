@@ -43,7 +43,7 @@ public:
    };
 
    //! Peeks the event of input device, if any, and returns it. 
-   virtual event_t poll() throw() = 0;
+   virtual event_t poll() noexcept = 0;
 };
 
 

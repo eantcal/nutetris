@@ -81,7 +81,7 @@ const piece_t::col_t & grid_t::at(const coord_t & col, const coord_t & row) cons
 
 /* -------------------------------------------------------------------------- */
 
-void grid_t::clear() throw()
+void grid_t::clear() noexcept
 {
    for (auto & row : _grid_map)
       for (auto & i : row)
@@ -114,7 +114,7 @@ bool grid_t::_is_completed_row(const coord_t& row_idx, bool empty) const
 
 /* -------------------------------------------------------------------------- */
 
-void grid_t::get_full_rows(full_rows_t & full_rows) const throw()
+void grid_t::get_full_rows(full_rows_t & full_rows) const noexcept
 {
    full_rows.clear();
 
@@ -130,7 +130,7 @@ void grid_t::get_full_rows(full_rows_t & full_rows) const throw()
 
 /* -------------------------------------------------------------------------- */
 
-void grid_t::fill_row(const coord_t & row_idx, const piece_t::col_t& attr) throw()
+void grid_t::fill_row(const coord_t & row_idx, const piece_t::col_t& attr) noexcept
 {
    auto cols = get_cols_count();
 
@@ -141,7 +141,7 @@ void grid_t::fill_row(const coord_t & row_idx, const piece_t::col_t& attr) throw
 
 /* -------------------------------------------------------------------------- */
 
-void grid_t::remove_full_rows() throw()
+void grid_t::remove_full_rows() noexcept
 {
    std::list< row_t > nonfullrows;
 
@@ -188,7 +188,7 @@ void grid_t::remove_full_rows() throw()
 
 /* -------------------------------------------------------------------------- */
    
-void grid_t::take_piece( piece_t::handle_t piece ) throw()
+void grid_t::take_piece( piece_t::handle_t piece ) noexcept
 {
    _current_piece = std::move(piece);
 }
@@ -196,7 +196,7 @@ void grid_t::take_piece( piece_t::handle_t piece ) throw()
 
 /* -------------------------------------------------------------------------- */
 
-void grid_t::give_piece(grid_t & grid) throw()
+void grid_t::give_piece(grid_t & grid) noexcept
 {
    grid._current_piece = std::move(_current_piece);
 }

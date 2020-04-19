@@ -54,7 +54,7 @@ private:
 protected:
 
    //! Return any keyboard or timer event
-   input_device_t::event_t poll() throw();
+   input_device_t::event_t poll() noexcept;
 
 
 public:

@@ -42,7 +42,7 @@ private:
 
 
 public:
-   event_t get_last_event() throw()
+   event_t get_last_event() noexcept
    {
       std::lock_guard<std::mutex> lk(_mtx);
       auto ev = _last_event;
@@ -112,7 +112,7 @@ public:
 
 /* -------------------------------------------------------------------------- */
 
-input_device_t::event_t keyboard_input_device_t::poll() throw()
+input_device_t::event_t keyboard_input_device_t::poll() noexcept
 {
    static keyb_poller_t poller;
    return poller.get_last_event();
@@ -129,7 +129,7 @@ input_device_t::event_t keyboard_input_device_t::poll() throw()
 
 /* -------------------------------------------------------------------------- */
 
-input_device_t::event_t keyboard_input_device_t::poll() throw()
+input_device_t::event_t keyboard_input_device_t::poll() noexcept
 {
    if (!_kbhit())
       return event_t::NONE;

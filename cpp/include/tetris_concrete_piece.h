@@ -43,7 +43,7 @@ private:
 
 protected:
    //! ctor
-   explicit concrete_piece_t(col_t colidx) throw() :
+   explicit concrete_piece_t(col_t colidx) noexcept :
       _color_idx(colidx)
    {
    }
@@ -79,7 +79,7 @@ protected:
 
 
    //! Computes piece-grid related margins
-   void compute_min_bounding_box() throw();
+   void compute_min_bounding_box() noexcept;
 
 
    //! Pre-computed piece orientations
@@ -87,15 +87,15 @@ protected:
 
 
    //! Returns a reference to piece data by using a given orientation index
-   shapedata_t& operator[] (size_t idx) throw();
+   shapedata_t& operator[] (size_t idx) noexcept;
 
 
    //! Returns piece data by using a given orientation index
-   const shapedata_t& operator[] (size_t idx) const throw();
+   const shapedata_t& operator[] (size_t idx) const noexcept;
 
 
    //! copy-ctor
-   concrete_piece_t(const concrete_piece_t& other) throw();
+   concrete_piece_t(const concrete_piece_t& other) noexcept;
 
 
    //! register piece into the factory
@@ -108,82 +108,82 @@ protected:
 public:
 
    //! Gets color attribute reference at piece-grid coordinates col, row
-   col_t & at(const coord_t& col, const coord_t& row) throw() override;
+   col_t & at(const coord_t& col, const coord_t& row) noexcept override;
 
 
    //! Gets color attribute at piece-grid coordinates col, row
-   const col_t & at(const coord_t& col, const coord_t& row) const throw() override;
+   const col_t & at(const coord_t& col, const coord_t& row) const noexcept override;
 
 
    //! get color index
-   virtual col_t get_color_idx() const throw() final;
+   virtual col_t get_color_idx() const noexcept final;
    
 
    //! move piece right by one game-grid cell
-   void move_right() throw() override;
+   void move_right() noexcept override;
 
 
    //! move piece left by one game-grid cell
-   void move_left() throw() override;
+   void move_left() noexcept override;
 
 
    //! move piece down by one game-grid cell
-   void move_down() throw() override;
+   void move_down() noexcept override;
 
 
    //! rotate piece clockwise
-   void rotate_cw() throw() override;
+   void rotate_cw() noexcept override;
 
 
    //! rotate piece anticlockwise
-   void rotate_acw() throw() override;
+   void rotate_acw() noexcept override;
 
 
    //! Updo last move/rotate operation
-   void undo() throw() override;
+   void undo() noexcept override;
 
 
    //! Gets game-grid piece column offset
-   coord_t get_col() const throw() override;
+   coord_t get_col() const noexcept override;
 
 
    //! Gets game-grid piece row offset
-   coord_t get_row() const throw() override;
+   coord_t get_row() const noexcept override;
 
 
    //! Gets the count of empty piece-grid columns on the left side of piece shape
-   coord_t get_left_margin() const throw() override;
+   coord_t get_left_margin() const noexcept override;
 
 
    //! Gets the count of empty piece-grid columns on the right side of piece shape
-   coord_t get_right_margin() const throw() override;
+   coord_t get_right_margin() const noexcept override;
 
 
    //! Gets the count of empty piece-grid rows on the top side of piece shape
-   coord_t get_top_margin() const throw() override;
+   coord_t get_top_margin() const noexcept override;
 
 
    //! Gets the count of empty piece-grid rows on the bottom side of piece shape
-   coord_t get_bottom_margin() const throw() override;
+   coord_t get_bottom_margin() const noexcept override;
 
 protected:
    //! Get orientation
-   orientation_t get_orientation() const throw() override;
+   orientation_t get_orientation() const noexcept override;
 
 
    //! Get shape data 
-   void get_shape_data(shapedata_t & data) const throw() override;
+   void get_shape_data(shapedata_t & data) const noexcept override;
 
 
    //! dtor
-   virtual ~concrete_piece_t() throw()
+   virtual ~concrete_piece_t() noexcept
    {}
 
 
    //! Clones T object by using a copy of itself
    //! @return a unique_ptr to T object instance
    template <class T> 
-   std::unique_ptr<T> _clone(const T & obj) const throw()
+   std::unique_ptr<T> _clone(const T & obj) const noexcept
    {
       auto p = new T(obj);
       assert(p);

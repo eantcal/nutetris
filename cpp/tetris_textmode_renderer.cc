@@ -36,7 +36,7 @@ namespace tetris
 
 /* -------------------------------------------------------------------------- */
 
-void textmode_renderer_t::render(const game_data_t& game_data) throw()
+void textmode_renderer_t::render(const game_data_t& game_data) noexcept
 {
    auto state = game_data.get_game_st();
 
@@ -73,7 +73,7 @@ void textmode_renderer_t::render(const game_data_t& game_data) throw()
 
 /* -------------------------------------------------------------------------- */
 
-void textmode_renderer_t::_draw_game_area(const game_data_t& game_data) throw()
+void textmode_renderer_t::_draw_game_area(const game_data_t& game_data) noexcept
 {
    const auto & game_area = game_data.get_game_grid();
    _draw_grid(game_area);
@@ -82,7 +82,7 @@ void textmode_renderer_t::_draw_game_area(const game_data_t& game_data) throw()
 
 /* -------------------------------------------------------------------------- */
 
-void textmode_renderer_t::_draw_grid(const grid_t& grid) throw()
+void textmode_renderer_t::_draw_grid(const grid_t& grid) noexcept
 {
    std::ostream& os = std::cout;
 
@@ -112,7 +112,7 @@ void textmode_renderer_t::_draw_grid(const grid_t& grid) throw()
 
 /* -------------------------------------------------------------------------- */
 
-void textmode_renderer_t::_draw_piece_preview(const game_data_t& game_data) throw()
+void textmode_renderer_t::_draw_piece_preview(const game_data_t& game_data) noexcept
 {
    const auto & preview_area = game_data.get_preview_canvas();
    _draw_grid(preview_area);
@@ -121,7 +121,7 @@ void textmode_renderer_t::_draw_piece_preview(const game_data_t& game_data) thro
 
 /* -------------------------------------------------------------------------- */
 
-void textmode_renderer_t::_draw_score(const game_data_t& game_data) throw()
+void textmode_renderer_t::_draw_score(const game_data_t& game_data) noexcept
 {
    std::cout << "Score:" << game_data.get_game_score() << std::endl;
 }

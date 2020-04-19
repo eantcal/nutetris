@@ -53,11 +53,11 @@ public:
          const std::string _pcause;
 
       public:
-         exception_t(const char* err) throw() : 
+         exception_t(const char* err) noexcept : 
             _pcause(err) 
          {}
 
-         const char* what() const throw() override
+         const char* what() const noexcept override
          {
             return _pcause.c_str();
          }
@@ -73,7 +73,7 @@ public:
 
 
    //! Gets number of pieces within the catalog
-   size_t get_piece_catalog_size() const throw()
+   size_t get_piece_catalog_size() const noexcept
    {
       return _piece_catalog.size();
    }
@@ -92,7 +92,7 @@ private:
    std::vector< piece_t::handle_t > _piece_catalog;
 
    //! ctor
-   piece_factory_t() throw() {}
+   piece_factory_t() noexcept {}
 };
 
 

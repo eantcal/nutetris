@@ -36,7 +36,7 @@ public:
    virtual ~input_event_listener_t() {};
 
    //! Called to notify the implementation that an event has occurred.
-   virtual void notify(const input_device_t::event_t & ev) throw() = 0;
+   virtual void notify(const input_device_t::event_t & ev) noexcept = 0;
 };
 
 

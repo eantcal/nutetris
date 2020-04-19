@@ -33,7 +33,7 @@ class keyboard_input_device_t : public input_device_t
 public:
 
    //! Peeks keyboard event, if any, and returns it
-   virtual event_t poll() throw() override;
+   virtual event_t poll() noexcept override;
 };
 
 

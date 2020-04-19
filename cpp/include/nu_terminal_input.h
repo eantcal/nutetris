@@ -50,12 +50,12 @@ private:
    struct termios _oldt;
 
 public:
-   inline termios_reset_t() throw()
+   inline termios_reset_t() noexcept
    {
       tcgetattr(STDIN_FILENO, &_oldt);
    }
 
-   inline ~termios_reset_t() throw()
+   inline ~termios_reset_t() noexcept
    {
       tcsetattr(STDIN_FILENO, TCSANOW, &_oldt);
    }
@@ -70,7 +70,7 @@ public:
 struct termios_makeraw_t : public termios_reset_t
 {
 public:
-   inline termios_makeraw_t() throw()
+   inline termios_makeraw_t() noexcept
    {
       struct termios new_termios;
 
@@ -133,21 +133,21 @@ public:
       terminal_input_t( bool disable_stdin_echo = true ) :
       _disable_stdin_echo( disable_stdin_echo ) {}
 
-   virtual ~terminal_input_t() throw();
-   virtual int getch() const throw();
+   virtual ~terminal_input_t() noexcept;
+   virtual int getch() const noexcept;
 
    /*! \brief returns a nonzero value if a key has been pressed. 
     *  Otherwise, it returns 0 (no events) or a 
     *  negative value in case of error 
     */
-   virtual int keybhit() const throw();
+   virtual int keybhit() const noexcept;
 
 
    /*! \brief returns a character if a key has been pressed. 
     *  Otherwise, it returns 0 (no events) or a 
     *  negative value in case of error 
     */
-   virtual char getrawch() const throw();
+   virtual char getrawch() const noexcept;
 };
 
 

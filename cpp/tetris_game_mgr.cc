@@ -47,7 +47,7 @@ game_mgr_t::game_mgr_t(
 
 /* -------------------------------------------------------------------------- */
 
-void game_mgr_t::register_events() throw()
+void game_mgr_t::register_events() noexcept
 {
    using ie_t = input_device_t::event_t;
 
@@ -63,7 +63,7 @@ void game_mgr_t::register_events() throw()
 
 /* -------------------------------------------------------------------------- */
 
-void game_mgr_t::register_render() throw()
+void game_mgr_t::register_render() noexcept
 {
    _renderer = std::unique_ptr< textmode_renderer_t >(new textmode_renderer_t);
 }
@@ -73,7 +73,7 @@ void game_mgr_t::register_render() throw()
 
 //! Called by input manager this function convert an input device event
 //! into game input command (skipping unused inputs)
-void game_mgr_t::notify(const input_device_t::event_t & ev) throw()
+void game_mgr_t::notify(const input_device_t::event_t & ev) noexcept
 {
    auto ev_it = _event_map.find(ev);
 
@@ -84,7 +84,7 @@ void game_mgr_t::notify(const input_device_t::event_t & ev) throw()
 
 /* -------------------------------------------------------------------------- */
 
-piece_factory_t& game_mgr_t::piece_factory() const throw()
+piece_factory_t& game_mgr_t::piece_factory() const noexcept
 {
    return _pfactory;
 }
@@ -92,7 +92,7 @@ piece_factory_t& game_mgr_t::piece_factory() const throw()
 
 /* -------------------------------------------------------------------------- */
 
-void game_mgr_t::render_scene() throw()
+void game_mgr_t::render_scene() noexcept
 {
    if (_renderer)
       _renderer->render(_game_renderer_data);
@@ -101,7 +101,7 @@ void game_mgr_t::render_scene() throw()
 
 /* -------------------------------------------------------------------------- */
 
-void game_mgr_t::undo_move_piece() throw()
+void game_mgr_t::undo_move_piece() noexcept
 {
    _game_grid.current_piece().undo();
    _game_grid.place_piece();
@@ -110,7 +110,7 @@ void game_mgr_t::undo_move_piece() throw()
 
 /* -------------------------------------------------------------------------- */
 
-void game_mgr_t::select_new_piece() throw()
+void game_mgr_t::select_new_piece() noexcept
 {
    _preview_canvas.give_piece(_game_grid);
 
@@ -126,7 +126,7 @@ void game_mgr_t::select_new_piece() throw()
 
 /* -------------------------------------------------------------------------- */
 
-game_mgr_t::input_t game_mgr_t::handle_piece_movements() throw()
+game_mgr_t::input_t game_mgr_t::handle_piece_movements() noexcept
 {
    auto input = get_input();
 
@@ -258,7 +258,7 @@ void game_mgr_t::play()
 
 /* -------------------------------------------------------------------------- */
 
-void game_mgr_t::setup() throw()
+void game_mgr_t::setup() noexcept
 {
    set_idle_intv(timer_input_device_t::interval_t(_falling_idle_intv));
 
@@ -319,7 +319,7 @@ void game_mgr_t::run()
 
 /* -------------------------------------------------------------------------- */
 
-const grid_t & game_mgr_t::game_renderer_data_t::get_game_grid() const throw() 
+const grid_t & game_mgr_t::game_renderer_data_t::get_game_grid() const noexcept 
 {
    return _this->_game_grid;
 }
@@ -327,7 +327,7 @@ const grid_t & game_mgr_t::game_renderer_data_t::get_game_grid() const throw()
 
 /* -------------------------------------------------------------------------- */
 
-const grid_t & game_mgr_t::game_renderer_data_t::get_preview_canvas() const throw() 
+const grid_t & game_mgr_t::game_renderer_data_t::get_preview_canvas() const noexcept 
 {
    return _this->_preview_canvas;
 }

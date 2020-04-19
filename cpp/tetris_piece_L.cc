@@ -83,7 +83,7 @@ public:
       register_piece(*this);
    }
 
-   piece_t::handle_t clone() const throw() override
+   piece_t::handle_t clone() const noexcept override
    {
       return _clone(*this);
    }

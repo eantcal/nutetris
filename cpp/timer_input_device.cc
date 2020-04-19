@@ -21,7 +21,7 @@
 
 /* -------------------------------------------------------------------------- */
 
-bool timer_input_device_t::_stop_request_pending() const throw()
+bool timer_input_device_t::_stop_request_pending() const noexcept
 {
    std::lock_guard<std::mutex> lock(_mtx);
    return _stop_thread_pending;
@@ -30,7 +30,7 @@ bool timer_input_device_t::_stop_request_pending() const throw()
 
 /* -------------------------------------------------------------------------- */
 
-void timer_input_device_t::_stop_thread() throw()
+void timer_input_device_t::_stop_thread() noexcept
 {
    std::lock_guard<std::mutex> lock(_mtx);
    _stop_thread_pending = true;
@@ -39,7 +39,7 @@ void timer_input_device_t::_stop_thread() throw()
 
 /* -------------------------------------------------------------------------- */
 
-bool timer_input_device_t::_ack_event() throw()
+bool timer_input_device_t::_ack_event() noexcept
 {
    std::lock_guard<std::mutex> lock(_mtx);
 
@@ -52,7 +52,7 @@ bool timer_input_device_t::_ack_event() throw()
 
 /* -------------------------------------------------------------------------- */
 
-void timer_input_device_t::_notify_event() throw()
+void timer_input_device_t::_notify_event() noexcept
 {
    std::lock_guard<std::mutex> lock(_mtx);
    _event = true;
@@ -84,7 +84,7 @@ timer_input_device_t::timer_input_device_t(interval_t intv) :
 
 /* -------------------------------------------------------------------------- */
 
-void timer_input_device_t::change_interval(const interval_t& new_interval) throw()
+void timer_input_device_t::change_interval(const interval_t& new_interval) noexcept
 {
    std::lock_guard<std::mutex> lock(_mtx);
    _interval = new_interval;
@@ -93,7 +93,7 @@ void timer_input_device_t::change_interval(const interval_t& new_interval) throw
 
 /* -------------------------------------------------------------------------- */
 
-timer_input_device_t::interval_t timer_input_device_t::get_interval() const throw()
+timer_input_device_t::interval_t timer_input_device_t::get_interval() const noexcept
 {
    std::lock_guard<std::mutex> lock(_mtx);
    return _interval;
@@ -102,7 +102,7 @@ timer_input_device_t::interval_t timer_input_device_t::get_interval() const thro
 
 /* -------------------------------------------------------------------------- */
 
-input_device_t::event_t timer_input_device_t::poll() throw()
+input_device_t::event_t timer_input_device_t::poll() noexcept
 {
    return _ack_event() ? event_t::TIMERTICK : event_t::NONE;
 }
@@ -110,7 +110,7 @@ input_device_t::event_t timer_input_device_t::poll() throw()
 
 /* -------------------------------------------------------------------------- */
 
-timer_input_device_t::~timer_input_device_t() throw()
+timer_input_device_t::~timer_input_device_t() noexcept
 {
    _stop_thread();
    _thread->join();

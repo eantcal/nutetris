@@ -38,7 +38,7 @@ timer_input_device_t& input_mgr_t::timerdev()
 
 /* -------------------------------------------------------------------------- */
 
-input_device_t::event_t input_mgr_t::poll() throw()
+input_device_t::event_t input_mgr_t::poll() noexcept
 {
    auto kbev = keybdev().poll();
    auto tmev = timerdev().poll();

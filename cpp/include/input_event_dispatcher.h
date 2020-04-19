@@ -41,22 +41,22 @@ private:
 
 protected:
    //! ctor
-   input_event_dispatcher_t() throw()
+   input_event_dispatcher_t() noexcept
    {}
 
    //! dtor
-   virtual ~input_event_dispatcher_t() throw();
+   virtual ~input_event_dispatcher_t() noexcept;
    
    //! Notify all the listeners
-   virtual void notify_all(const input_device_t::event_t & ev) throw();
+   virtual void notify_all(const input_device_t::event_t & ev) noexcept;
 
 public:
 
    //! Register a new listener
-   virtual void subscribe(input_event_listener_t* listener) throw();
+   virtual void subscribe(input_event_listener_t* listener) noexcept;
 
    //! Unregister an existent listener
-   virtual void unsubscribe(input_event_listener_t* listener) throw();
+   virtual void unsubscribe(input_event_listener_t* listener) noexcept;
 };
 
 

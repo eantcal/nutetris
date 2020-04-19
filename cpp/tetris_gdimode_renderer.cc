@@ -51,7 +51,7 @@ static const int GREY2 = _nu_rgb(0x40, 0x40, 0x40);
 
 /* -------------------------------------------------------------------------- */
 
-gdimode_renderer_t::gdimode_renderer_t() throw()
+gdimode_renderer_t::gdimode_renderer_t() noexcept
 {
    _colors = 
    {
@@ -76,7 +76,7 @@ gdimode_renderer_t::gdimode_renderer_t() throw()
    
 /* -------------------------------------------------------------------------- */
 
-void gdimode_renderer_t::render(const game_data_t& game_data) throw()
+void gdimode_renderer_t::render(const game_data_t& game_data) noexcept
 {
    auto state = game_data.get_game_st();
 
@@ -154,14 +154,14 @@ void gdimode_renderer_t::render(const game_data_t& game_data) throw()
 
 /* -------------------------------------------------------------------------- */
 
-void _draw_grid() throw();
+void _draw_grid() noexcept;
 
 void gdimode_renderer_t::_draw_grid(
    const grid_t& grid, 
    int screenx, 
    int screeny, 
    int cellsize
-   ) throw()
+   ) noexcept
 {
    std::ostream& os = std::cout;
 
@@ -206,7 +206,7 @@ void gdimode_renderer_t::_draw_grid(
 
 /* -------------------------------------------------------------------------- */
 
-void gdimode_renderer_t::_draw_score(const game_data_t& game_data) throw()
+void gdimode_renderer_t::_draw_score(const game_data_t& game_data) noexcept
 {
    auto score = game_data.get_game_score();
    //if (score == _score)

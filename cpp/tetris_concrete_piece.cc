@@ -27,7 +27,7 @@ namespace tetris
 
 /* -------------------------------------------------------------------------- */
 
-concrete_piece_t::concrete_piece_t(const concrete_piece_t& other) throw()
+concrete_piece_t::concrete_piece_t(const concrete_piece_t& other) noexcept
    :
    _data(other._data),
    _undo_data(other._undo_data),
@@ -40,7 +40,7 @@ concrete_piece_t::concrete_piece_t(const concrete_piece_t& other) throw()
 
 /* -------------------------------------------------------------------------- */
 
-piece_t::shapedata_t& concrete_piece_t::operator[] (size_t idx) throw()
+piece_t::shapedata_t& concrete_piece_t::operator[] (size_t idx) noexcept
 {
    assert(idx < _oriented_shapes.size());
    return _oriented_shapes[idx];
@@ -49,7 +49,7 @@ piece_t::shapedata_t& concrete_piece_t::operator[] (size_t idx) throw()
 
 /* -------------------------------------------------------------------------- */
 
-const piece_t::shapedata_t& concrete_piece_t::operator[] (size_t idx) const throw()
+const piece_t::shapedata_t& concrete_piece_t::operator[] (size_t idx) const noexcept
 {
    assert(idx < _oriented_shapes.size());
    return _oriented_shapes[idx];
@@ -58,7 +58,7 @@ const piece_t::shapedata_t& concrete_piece_t::operator[] (size_t idx) const thro
 
 /* -------------------------------------------------------------------------- */
 
-piece_t::col_t concrete_piece_t::get_color_idx() const throw()
+piece_t::col_t concrete_piece_t::get_color_idx() const noexcept
 {
    return _color_idx;
 }
@@ -66,7 +66,7 @@ piece_t::col_t concrete_piece_t::get_color_idx() const throw()
 
 /* -------------------------------------------------------------------------- */
 
-void concrete_piece_t::move_right() throw()
+void concrete_piece_t::move_right() noexcept
 {
    _undo_data = _data;
    ++_data._pos_x;
@@ -75,7 +75,7 @@ void concrete_piece_t::move_right() throw()
 
 /* -------------------------------------------------------------------------- */
 
-void concrete_piece_t::move_left() throw()
+void concrete_piece_t::move_left() noexcept
 {
    _undo_data = _data;
    --_data._pos_x;
@@ -84,7 +84,7 @@ void concrete_piece_t::move_left() throw()
 
 /* -------------------------------------------------------------------------- */
 
-void concrete_piece_t::move_down() throw()
+void concrete_piece_t::move_down() noexcept
 {
    _undo_data = _data;
    ++_data._pos_y;
@@ -93,7 +93,7 @@ void concrete_piece_t::move_down() throw()
 
 /* -------------------------------------------------------------------------- */
 
-void concrete_piece_t::rotate_acw() throw()
+void concrete_piece_t::rotate_acw() noexcept
 {
    _undo_data = _data;
    ++_data._orientation;
@@ -106,7 +106,7 @@ void concrete_piece_t::rotate_acw() throw()
 
 /* -------------------------------------------------------------------------- */
 
-void concrete_piece_t::rotate_cw() throw()
+void concrete_piece_t::rotate_cw() noexcept
 {
    _undo_data = _data;
    --_data._orientation;
@@ -119,7 +119,7 @@ void concrete_piece_t::rotate_cw() throw()
 
 /* -------------------------------------------------------------------------- */
 
-void concrete_piece_t::undo() throw()
+void concrete_piece_t::undo() noexcept
 {
    _data = _undo_data;
 }
@@ -127,7 +127,7 @@ void concrete_piece_t::undo() throw()
 
 /* -------------------------------------------------------------------------- */
 
-piece_t::coord_t concrete_piece_t::get_col() const throw()
+piece_t::coord_t concrete_piece_t::get_col() const noexcept
 {
    return _data._pos_x;
 }
@@ -135,7 +135,7 @@ piece_t::coord_t concrete_piece_t::get_col() const throw()
 
 /* -------------------------------------------------------------------------- */
 
-piece_t::coord_t concrete_piece_t::get_row() const throw()
+piece_t::coord_t concrete_piece_t::get_row() const noexcept
 {
    return _data._pos_y;
 }
@@ -143,7 +143,7 @@ piece_t::coord_t concrete_piece_t::get_row() const throw()
 
 /* -------------------------------------------------------------------------- */
 
-piece_t::orientation_t concrete_piece_t::get_orientation() const throw()
+piece_t::orientation_t concrete_piece_t::get_orientation() const noexcept
 {
    return _data._orientation;
 }
@@ -151,7 +151,7 @@ piece_t::orientation_t concrete_piece_t::get_orientation() const throw()
 
 /* -------------------------------------------------------------------------- */
 
-void concrete_piece_t::get_shape_data(shapedata_t & data) const throw()
+void concrete_piece_t::get_shape_data(shapedata_t & data) const noexcept
 {
    data = _oriented_shapes[get_orientation()];
 }
@@ -159,7 +159,7 @@ void concrete_piece_t::get_shape_data(shapedata_t & data) const throw()
 
 /* -------------------------------------------------------------------------- */
 
-void concrete_piece_t::compute_min_bounding_box() throw()
+void concrete_piece_t::compute_min_bounding_box() noexcept
 {
    if (_oriented_shapes.empty())
       return;
@@ -210,7 +210,7 @@ void concrete_piece_t::compute_min_bounding_box() throw()
 
 /* -------------------------------------------------------------------------- */
 
-piece_t::coord_t concrete_piece_t::get_left_margin() const throw()
+piece_t::coord_t concrete_piece_t::get_left_margin() const noexcept
 {
    return _data._left_margin;
 }
@@ -218,7 +218,7 @@ piece_t::coord_t concrete_piece_t::get_left_margin() const throw()
 
 /* -------------------------------------------------------------------------- */
 
-piece_t::coord_t concrete_piece_t::get_right_margin() const throw()
+piece_t::coord_t concrete_piece_t::get_right_margin() const noexcept
 {
    return _data._right_margin;
 }
@@ -226,7 +226,7 @@ piece_t::coord_t concrete_piece_t::get_right_margin() const throw()
 
 /* -------------------------------------------------------------------------- */
 
-piece_t::coord_t concrete_piece_t::get_top_margin() const throw()
+piece_t::coord_t concrete_piece_t::get_top_margin() const noexcept
 {
    return _data._top_margin;
 }
@@ -234,7 +234,7 @@ piece_t::coord_t concrete_piece_t::get_top_margin() const throw()
 
 /* -------------------------------------------------------------------------- */
 
-piece_t::coord_t concrete_piece_t::get_bottom_margin() const throw()
+piece_t::coord_t concrete_piece_t::get_bottom_margin() const noexcept
 {
    return _data._bottom_margin;
 }
@@ -242,7 +242,7 @@ piece_t::coord_t concrete_piece_t::get_bottom_margin() const throw()
 
 /* -------------------------------------------------------------------------- */
 
-piece_t::col_t & concrete_piece_t::at(const coord_t& col, const coord_t& row) throw()
+piece_t::col_t & concrete_piece_t::at(const coord_t& col, const coord_t& row) noexcept
 {
    assert(col >= 0 && col < piece_t::COLS);
    assert(row >= 0 && row < piece_t::ROWS);
@@ -256,7 +256,7 @@ piece_t::col_t & concrete_piece_t::at(const coord_t& col, const coord_t& row) th
 
 /* -------------------------------------------------------------------------- */
 
-const piece_t::col_t & concrete_piece_t::at(const coord_t& col, const coord_t& row) const throw()
+const piece_t::col_t & concrete_piece_t::at(const coord_t& col, const coord_t& row) const noexcept
 {
    assert(col >= 0 && col < piece_t::COLS);
    assert(row >= 0 && row < piece_t::ROWS);

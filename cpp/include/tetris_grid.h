@@ -65,11 +65,11 @@ public:
          const std::string _pcause;
 
       public:
-         exception_t(const char* err) throw() : 
+         exception_t(const char* err) noexcept : 
             _pcause(err) 
          {}
 
-         const char* what() const throw() override
+         const char* what() const noexcept override
          {
             return _pcause.c_str();
          }
@@ -82,13 +82,13 @@ public:
    virtual ~grid_t() {}
 
    //! Gets columns count
-   virtual const coord_t get_cols_count() const throw() final
+   virtual const coord_t get_cols_count() const noexcept final
    {
       return _cols;
    }
 
    //! Gets rows count
-   virtual const coord_t get_rows_count() const throw() final
+   virtual const coord_t get_rows_count() const noexcept final
    {
       return _rows;
    }
@@ -100,22 +100,22 @@ public:
    virtual const piece_t::col_t & at(const coord_t & x, const coord_t & y) const;
 
    //! Clear the grid content
-   virtual void clear() throw();
+   virtual void clear() noexcept;
 
    //! Select new piece
-   virtual void take_piece(piece_t::handle_t piece) throw();
+   virtual void take_piece(piece_t::handle_t piece) noexcept;
 
    //! Gives the selected piece to other grid
-   virtual void give_piece(grid_t & grid) throw();
+   virtual void give_piece(grid_t & grid) noexcept;
 
    //! Gets a list of full rows
-   virtual void get_full_rows(full_rows_t & full_rows) const throw();
+   virtual void get_full_rows(full_rows_t & full_rows) const noexcept;
 
    //! Fills the cells of a whole row using a given color attribute
-   virtual void fill_row(const coord_t & row_idx, const piece_t::col_t& attr) throw();
+   virtual void fill_row(const coord_t & row_idx, const piece_t::col_t& attr) noexcept;
 
    //! Removes the completed rows, moving down the other cells
-   virtual void remove_full_rows() throw();
+   virtual void remove_full_rows() noexcept;
    
    //! Place-piece operation result type
    enum class place_st_t
