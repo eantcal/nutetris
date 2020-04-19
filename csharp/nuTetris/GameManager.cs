@@ -54,8 +54,8 @@ namespace nuTetris
         private const int BOARD_Y = 20;
 
         /** Canvas position */
-        private const int CANVS_X = 300;
-        private const int CANVS_Y = 30;
+        private const int CANVS_X = 320;
+        private const int CANVS_Y = 50;
 
         private const int BRICKSIZE = 20;
 

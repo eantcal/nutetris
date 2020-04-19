@@ -44,7 +44,7 @@ namespace nuTetris
             this.lblScore.AutoSize = true;
             this.lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScore.ForeColor = System.Drawing.Color.White;
-            this.lblScore.Location = new System.Drawing.Point(246, 9);
+            this.lblScore.Location = new System.Drawing.Point(246, 32);
             this.lblScore.Name = "lblScore";
             this.lblScore.Size = new System.Drawing.Size(60, 24);
             this.lblScore.TabIndex = 0;
@@ -55,7 +55,7 @@ namespace nuTetris
             this.lblNext.AutoSize = true;
             this.lblNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNext.ForeColor = System.Drawing.Color.White;
-            this.lblNext.Location = new System.Drawing.Point(246, 50);
+            this.lblNext.Location = new System.Drawing.Point(246, 73);
             this.lblNext.Name = "lblNext";
             this.lblNext.Size = new System.Drawing.Size(49, 24);
             this.lblNext.TabIndex = 2;
@@ -66,8 +66,8 @@ namespace nuTetris
             this.txtScore.AutoSize = true;
             this.txtScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtScore.ForeColor = System.Drawing.Color.White;
-            this.txtScore.Location = new System.Drawing.Point(326, 9);
-            this.txtScore.Name = "label1";
+            this.txtScore.Location = new System.Drawing.Point(350, 32);
+            this.txtScore.Name = "txtScore";
             this.txtScore.Size = new System.Drawing.Size(20, 24);
             this.txtScore.TabIndex = 3;
             this.txtScore.Text = "0";
